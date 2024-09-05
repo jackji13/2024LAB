@@ -38,6 +38,15 @@ h1 {
     transform: rotate3d(0, 1, 0, 45deg);
 }
 
+.albumCover {
+    position: absolute;
+    top: 20vh;
+    left: 0;
+    width: 100vw;
+    height: 80vh;
+    border: 2px solid blue;
+}
+
 .textContainer {
     position: absolute;
     z-index: -1;
