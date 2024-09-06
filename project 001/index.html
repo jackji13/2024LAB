@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Album Cover</title>
@@ -9,43 +10,29 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
-    <!-- Make sure your script is marked as type="module" -->
-    <script type="module" src="script.js"></script>
+    <link rel="stylesheet" href="https://use.typekit.net/tep7wrm.css">
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script defer src="script.js"></script>
+    
 </head>
 
 <body>
 
-    <h1>ALBUM COVER</h1>
-
-    <!-- <div class="albumContainer">
-        <a href="p1.html"><img class="albumImg" src="assets/1.png" alt="Placeholder Image"></a>
-        <a href="p1.html"><img class="albumImg" src="assets/2.png" alt="Placeholder Image"></a>
-        <a href="p1.html"><img class="albumImg" src="assets/3.png" alt="Placeholder Image"></a>
-        <a href="p1.html"><img class="albumImg" src="assets/4.png" alt="Placeholder Image"></a>
-        <a href="p1.html"><img class="albumImg" src="assets/5.png" alt="Placeholder Image"></a>
-        <a href="p1.html"><img class="albumImg" src="assets/6.png" alt="Placeholder Image"></a>
-        <a href="p1.html"><img class="albumImg" src="assets/7.png" alt="Placeholder Image"></a>
-        <a href="p1.html"><img class="albumImg" src="assets/8.png" alt="Placeholder Image"></a>
-        <a href="p1.html"><img class="albumImg" src="assets/9.png" alt="Placeholder Image"></a>
-        <a href="p1.html"><img class="albumImg" src="assets/10.png" alt="Placeholder Image"></a>
-        <a href="p1.html"><img class="albumImg" src="assets/11.png" alt="Placeholder Image"></a>
-        <a href="p1.html"><img class="albumImg" src="assets/12.png" alt="Placeholder Image"></a>
-        <a href="p1.html"><img class="albumImg" src="assets/13.png" alt="Placeholder Image"></a>
-        <a href="p1.html"><img class="albumImg" src="assets/14.png" alt="Placeholder Image"></a>
-        <a href="p1.html"><img class="albumImg" src="assets/15.png" alt="Placeholder Image"></a>
-        <a href="p1.html"><img class="albumImg" src="assets/16.png" alt="Placeholder Image"></a>
-    </div> -->
-
     <div class="textContainer">
-        <p class="text">DOXER - A cautionary platform that delves into the implications
-             of personal data exposure in the digital era. Inspired by vibrant discussions
-              on Hacker News about avatar generation and fake information for scams, Doxer
-               transforms personal data such as names, ages, and addresses into engaging visual 
-               narratives.
+        <h1>ALBUM COVER</h1>
+        <p class="text">
+            I create a piece of album art every day, and after a year, I plan to compile them into a book.
         </p>
     </div>
 
-    <div id="threejsContainer" class="albumCover"></div>
+    <div class="albumContainer"></div>
+
+    <div id="scene-container" class="albumCoverModel"></div>
+
+    <audio id="animation-audio">
+        <source src="assets/paper.mp3" type="audio/mp3">
+    </audio>
 
 </body>
 

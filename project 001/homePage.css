@@ -1,7 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    border: 2px solid red;
 }
 
 body {
@@ -10,59 +9,55 @@ body {
     overflow-x: hidden;
 }
 
-h1 {
-    position: absolute;
-    top: 10vh;
-    left: 50vw;
-    transform: translate(-50%, -50%);
-    padding: 2vh;
-    font-family: "Nanum Gothic Coding", monospace;
-    font-weight: 400;
-    font-size: 36pt;
-    color: #000000;
-}
-
 .albumContainer {
+    width: 50vw;
+    height: 400vh;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    width: 100vw;
-    height: 300vh;
 }
 
-.albumImg {
-    padding-left: 1vw;
-    padding-right: 1vw;
-    width: 200px;
-    height: 200px;
-    transform: rotate3d(0, 1, 0, 45deg);
+.albumContainer img {
+    width: 250px; /* Adjust as needed */
+    height: 250px;
+    margin-top: 3vh;
+    transition: all 0.35s ease;
 }
 
-.albumCover {
-    position: absolute;
-    top: 20vh;
-    left: 0;
-    width: 100vw;
-    height: 80vh;
-    border: 2px solid blue;
+.albumContainer img:hover {
+    transform: scale(1.1) translateX(120px);
+}
+
+.albumCoverModel {
+    position: fixed;
+    top: 0;
+    right: 0vw;
+    width: 60vw; /* Your desired cropped width */
+    height: 100vh; /* Your desired cropped height */
+    overflow: hidden; /* Crops content that overflows */
+    z-index: 0;
 }
 
 .textContainer {
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    position: fixed;
+    top: 3vh;
+    left: 2vw;
+    width: 15vw;
+    height: 94vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
+    font-family: "cofo-peshka-variable", sans-serif;
+    font-variation-settings: "slnt" -15, "wght" 1900, "wdth" 130;
+    font-size: 26pt;
+    color: #000000;
 }
 
 .text {
-    width: 75%;
     font-family: "Nanum Gothic Coding", monospace;
-    font-weight: 400;
+    font-weight: 800;
     font-size: 16pt;
     color: #000000;
     text-align: justify;
