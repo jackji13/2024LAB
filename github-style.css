@@ -1,12 +1,12 @@
 body {
-    text-decoration: none;
     display: flex;
     justify-content: space-between;
     align-items: start;
     font-family: "Anton";
     font-size: 230pt;
-    color: black;
+    overflow-x: hidden;
 }
+
 .title {
     position: fixed;
     left: 0px;
@@ -16,27 +16,48 @@ body {
     line-height: 275px;
 }
 
-/* .title2 {
+.title2 {
     text-decoration: none;
     color: black;
     position: fixed;
-    left: 0px;
+    left: 8px;
     bottom: 6px;
     display: inline-block;
     letter-spacing: -5px;
     line-height: 275px;
-    transition: all 1s ease;
+    transition: all 0.8s ease;
 }
 
 .title2:hover {
-    transform: translateY(-190px);
+    transform: translateY(-410px);
     color: white;
     text-shadow:
-    -1.5px -1.5px 0 #000,  
-    1.5px -1.5px 0 #000,
-    -1.5px  1.5px 0 #000,
-    1.5px  1.5px 0 #000; 
-} */
+    -1.5px -1.5px 0 black,  
+    1.5px -1.5px 0 black,
+    -1.5px  1.5px 0 black,
+    1.5px  1.5px 0 black; 
+}
+
+.title2 .tooltip {
+    color: black;
+    visibility: hidden;
+    width: 110%;
+    font-size: 90pt;
+    letter-spacing: 0px;
+    line-height: 92pt;
+
+    position: absolute;
+    z-index: 1;
+    Top: 300px;
+    left: 0px;
+    opacity: 0%;
+    transition: all 0.5s ease;
+}
+
+.title2:hover .tooltip {
+    visibility: visible;
+    opacity: 100%;
+}
 
 .container {
     display: flex;
@@ -45,6 +66,7 @@ body {
     position: absolute;
     right: 10px;
     top: -85px;
+    animation: number 0.8s 0.9s ease both;
 }
 
 .number {
@@ -52,15 +74,71 @@ body {
     text-decoration: none;
     color: black;
     letter-spacing: -5px;
-    transition: all 1s ease;
+    transition: all 0.4s ease;
+
 }
 
 .number:hover {
-    transform: translateX(-235px);
+    transform: scaleY(1.7);
     color: white;
     text-shadow:
-    -1.5px -1.5px 0 #000,
-    1.5px -1.5px 0 #000,
-    -1.5px  1.5px 0 #000,
-    1.5px  1.5px 0 #000;
+    -1.5px -1.5px 0 black,  
+    1.5px -1.5px 0 black,
+    -1.5px  1.5px 0 black,
+    1.5px  1.5px 0 black; 
 }
+
+.number1 {
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    letter-spacing: -5px;
+    transition: all 0.4s ease;
+}
+
+.number1:hover {
+    transform: scaleY(1.7) translateY(55px);
+    color: white;
+    text-shadow:
+    -1.5px -1.5px 0 black,  
+    1.5px -1.5px 0 black,
+    -1.5px  1.5px 0 black,
+    1.5px  1.5px 0 black; 
+}
+
+#cubeCanvas {
+    pointer-events: none;
+    position: fixed;
+    z-index: -1;
+    top: 140px;
+    left: 53%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.8s ease;
+    animation: cube 1.3s ease none;
+}
+
+@keyframes cube {
+    0% {
+        left: 23%;
+        opacity: 0;
+    }
+
+    100% {
+        left: 53%;
+        opacity: 1;
+    }
+}
+
+@keyframes number {
+    0% {
+        right: -400px;
+        opacity: 0;
+    }
+
+    100% {
+        right: 8px;
+        opacity: 1;
+    }
+}
+
+
