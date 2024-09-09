@@ -1,28 +1,26 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    // Scene
+    //Scene
     const scene = new THREE.Scene();
     scene.background = null;
-
-    // Get the scene container dimensions (cropped dimensions)
     const sceneContainer = document.getElementById('scene-container');
     const containerWidth = sceneContainer.clientWidth;
     const containerHeight = sceneContainer.clientHeight;
 
-    // Camera
+    //Camera
     const camera = new THREE.PerspectiveCamera(60, containerWidth / containerHeight, 0.1, 1000);
-    camera.position.z = 4.6;  // Set the initial camera distance from the model
+    camera.position.z = 4.6;
 
-    // Renderer
+    //Renderer
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(containerWidth, containerHeight);
     renderer.setClearColor(0x000000, 0);
     sceneContainer.appendChild(renderer.domElement);
 
     const textureLoader = new THREE.TextureLoader();
-    let model, coverMesh, mixer;  // For controlling animation and texture update
+    let model, coverMesh, mixer;
 
-    // Load GLTF Model
+    //GLTF Loader
     const loader = new THREE.GLTFLoader();
     loader.load('assets/albumcover1.gltf', (gltf) => {
         model = gltf.scene;
@@ -30,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
         model.traverse((child) => {
             if (child.isMesh) {
                 if (child.name === 'cover') {
-                    coverMesh = child;  // Store the mesh that needs to change texture
+                    coverMesh = child;
                     child.material = new THREE.MeshBasicMaterial({
                         map: textureLoader.load('assets/textures/Album-Cover-001.jpg')
                     });
@@ -58,27 +56,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const audio = document.getElementById('animation-audio');
 
-    // Event listener for clicking on images to change texture
+    //Interaction
     const albumContainer = document.querySelector('.albumContainer');
     albumContainer.addEventListener('click', (e) => {
         if (e.target.tagName === 'IMG') {
             const newTexturePath = e.target.src;
 
-            // Change the texture of the 3D model
             const newTexture = textureLoader.load(newTexturePath);
             coverMesh.material.map = newTexture;
             coverMesh.material.needsUpdate = true;
 
-            // Replay the animation and play the audio
             if (mixer) {
-                mixer.stopAllAction();  // Stop current animation
+                mixer.stopAllAction();
                 const action = mixer.clipAction(mixer._actions[0].getClip());
-                action.reset();  // Reset the animation
-                action.play();  // Play the animation again
+                action.reset();
+                action.play();
 
-                // Play the audio
-                audio.currentTime = 0;  // Reset the audio to the beginning
-                audio.play();  // Play the MP3
+                audio.currentTime = 0;
+                audio.play();
             }
         }
     });
@@ -86,22 +81,21 @@ document.addEventListener("DOMContentLoaded", () => {
     function animate() {
         requestAnimationFrame(animate);
 
-        if (mixer) mixer.update(0.01);  // Update mixer if animations exist
+        if (mixer) mixer.update(0.01);
 
-        renderer.render(scene, camera);  // Directly render the scene using the renderer
+        renderer.render(scene, camera);
     }
     animate();
 
-    // Handle window resizing
     window.addEventListener('resize', () => {
         const newWidth = sceneContainer.clientWidth;
         const newHeight = sceneContainer.clientHeight;
         camera.aspect = newWidth / newHeight;
         camera.updateProjectionMatrix();
-        renderer.setSize(newWidth, newHeight);  // Directly update renderer size
+        renderer.setSize(newWidth, newHeight);
     });
 
-    // Create and append 83 images
+    //Put 83 images on the page
     for (let i = 1; i <= 83; i++) {
         const img = document.createElement('img');
         const fileName = 'Album-Cover-' + i.toString().padStart(3, '0') + '.jpg';
