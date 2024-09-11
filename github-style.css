@@ -111,10 +111,9 @@ body {
     position: fixed;
     z-index: -1;
     top: 140px;
-    left: 53%;
     transform: translate(-50%, -50%);
     transition: transform 0.8s ease;
-    animation: cube 1.3s ease none;
+    animation: cube 1.3s ease both;
 }
 
 @keyframes cube {
@@ -124,7 +123,7 @@ body {
     }
 
     100% {
-        left: 53%;
+        left: 55%;
         opacity: 1;
     }
 }
@@ -141,4 +140,6 @@ body {
     }
 }
 
-
+.number1:hover #cubeCanvas {
+    transform: rotateY(180deg);
+}

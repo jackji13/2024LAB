@@ -1,7 +1,7 @@
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.module.js';
 import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.164.1/examples/jsm/controls/OrbitControls.js';
 
-const canvas = document.getElementById('cubeCanvas');  // Get the specific canvas for the cube
+const canvas = document.getElementById('cubeCanvas');
 
 const scene = new THREE.Scene();
 
@@ -60,19 +60,17 @@ function loadTexture(url) {
 }
 
 Promise.all([
-    loadTexture('assets/P.png'),
-    loadTexture('assets/O.png'),
-    loadTexture('assets/T.png'),
-    loadTexture('assets/Y.png')
-]).then(([textureP, textureO, textureT, textureY]) => {
+    loadTexture('assets/L.png'),
+    loadTexture('assets/A.png'),
+    loadTexture('assets/B.png'),
+
+]).then(([textureL, textureA, textureB]) => {
     const materials = [
-        new THREE.MeshBasicMaterial({ map: textureP, transparent: true }),
-        new THREE.MeshBasicMaterial({ map: textureY, transparent: true }),
-        new THREE.MeshBasicMaterial({ map: textureT, transparent: true }),
-        new THREE.MeshBasicMaterial({ transparent: true, opacity: 0 }),
-        new THREE.MeshBasicMaterial({ map: textureO, transparent: true }),
-        new THREE.MeshBasicMaterial({ transparent: true, opacity: 0 })
+        new THREE.MeshBasicMaterial({ map: textureB, transparent: true }),
+        new THREE.MeshBasicMaterial({ map: textureA, transparent: true }),
+        new THREE.MeshBasicMaterial({ map: textureL, transparent: true }),
     ];
+
     const overlayGeometry = new THREE.BoxGeometry(1.01, 1.01, 1.01);
     const overlayCube = new THREE.Mesh(overlayGeometry, materials);
     scene.add(overlayCube);
