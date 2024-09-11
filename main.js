@@ -1,5 +1,4 @@
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.module.js';
-import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.164.1/examples/jsm/controls/OrbitControls.js';
 
 const canvas = document.getElementById('cubeCanvas');
 
@@ -83,14 +82,10 @@ Promise.all([
         overlayCube.rotation.x = cube.rotation.x;
         overlayCube.rotation.y = cube.rotation.y;
         overlayCube.rotation.z = cube.rotation.z;
-        controls.update();
         renderer.render(scene, camera);
     }
     animate();
 });
-
-const controls = new OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true;
 
 let scrollSpeed = 0.003;
 const defaultRotationSpeed = 0.003;

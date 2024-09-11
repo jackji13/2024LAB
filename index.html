@@ -28,44 +28,44 @@
 
         <div>
             <span class="title2">CORE LAB
-                <span class="tooltip">PARSONS SCHOOL OF DESIGN Core Lab Jack Ji</span>
+                <span class="tooltip">PARSONS SCHOOL OF DESIGN<br>Core Lab Jack Ji</span>
             </span>
         </div>
-    
-        <div>
-            <canvas id="cubeCanvas"></canvas>
-        </div>
+
+        <canvas id="cubeCanvas"></canvas>
 
         <div class="container">
-
             <div>
                 <a class="number1" href="https://jackji13.github.io/2024LAB/project%20000/index.html">000</a>
             </div>
-
+    
             <div>
                 <a class="number" href="https://jackji13.github.io/2024LAB/project%20001/index.html">001</a>
             </div>
-
+    
             <div>
                 <a class="number" href="https://jackji13.github.io/2024LAB/project%20001/index.html">002</a>
             </div>
-
+    
             <div>
                 <a class="number" href="https://jackji13.github.io/2024LAB/project%20001/index.html">003</a>
             </div>
-
-            <!-- <div>
-                <a class="number" href="https://jackji13.github.io/2024LAB/project%20002/index.html">002</a>
-            </div>
-
-            <div>
-                <a class="number" href="https://jackji13.github.io/2024LAB/project%20003/index.html">003</a>
-            </div>
-
-            <div>
-                <a class="number" href="https://jackji13.github.io/2024LAB/project%20004/index.html">004</a>
-            </div> -->
         </div>
+
+        <script>
+            const number1 = document.querySelector('.container');
+            const cubeCanvas = document.getElementById('cubeCanvas');
+    
+            number1.addEventListener('mouseenter', () => {
+                cubeCanvas.style.transition = 'transform 0.8s ease'; // Ensure smooth transition
+                cubeCanvas.style.transform = 'translateX(250px)';    // Move canvas down by 100px
+            });
+    
+            number1.addEventListener('mouseleave', () => {
+                cubeCanvas.style.transform = 'translateX(0px)';      // Reset canvas to original position
+            });
+        </script>
+
     </body>
 
     </html>

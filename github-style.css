@@ -14,6 +14,8 @@ body {
     display: inline-block;
     letter-spacing: -5px;
     line-height: 275px;
+    animation: title 1.3s ease both;
+
 }
 
 .title2 {
@@ -26,6 +28,8 @@ body {
     letter-spacing: -5px;
     line-height: 275px;
     transition: all 0.8s ease;
+    animation: title2 1.3s ease both;
+
 }
 
 .title2:hover {
@@ -59,6 +63,30 @@ body {
     opacity: 100%;
 }
 
+@keyframes title {
+    0% {
+        transform: translateY(-350px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes title2 {
+    0% {
+        transform: translateY(350px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -75,7 +103,6 @@ body {
     color: black;
     letter-spacing: -5px;
     transition: all 0.4s ease;
-
 }
 
 .number:hover {
@@ -107,23 +134,23 @@ body {
 }
 
 #cubeCanvas {
-    pointer-events: none;
+    width: 100vw;
+    height: 100vh;
     position: fixed;
     z-index: -1;
-    top: 140px;
-    transform: translate(-50%, -50%);
+    top: -35vh;
     transition: transform 0.8s ease;
     animation: cube 1.3s ease both;
 }
 
 @keyframes cube {
     0% {
-        left: 23%;
+        left: -30vw;
         opacity: 0;
     }
 
     100% {
-        left: 55%;
+        left: 5vw;
         opacity: 1;
     }
 }
@@ -138,8 +165,4 @@ body {
         right: 8px;
         opacity: 1;
     }
-}
-
-.number1:hover #cubeCanvas {
-    transform: rotateY(180deg);
 }
