@@ -1,3 +1,7 @@
+/* * {
+    border: 2px solid red;
+} */
+
 body {
     display: flex;
     justify-content: space-between;
@@ -15,25 +19,21 @@ body {
     letter-spacing: -5px;
     line-height: 275px;
     animation: title 1.3s ease both;
-
 }
 
 .title2 {
     text-decoration: none;
-    color: black;
     position: fixed;
-    left: 8px;
-    bottom: 6px;
-    display: inline-block;
+    left: 0px;
+    bottom: 0px;
     letter-spacing: -5px;
     line-height: 275px;
     transition: all 0.8s ease;
     animation: title2 1.3s ease both;
-
 }
 
 .title2:hover {
-    transform: translateY(-410px);
+    transform: translateY(-810px);
     color: white;
     text-shadow:
     -1.5px -1.5px 0 black,  
@@ -42,24 +42,19 @@ body {
     1.5px  1.5px 0 black; 
 }
 
-.title2 .tooltip {
+.title2 .title2tooltip {
     color: black;
-    visibility: hidden;
-    width: 110%;
     font-size: 90pt;
     letter-spacing: 0px;
     line-height: 92pt;
-
     position: absolute;
-    z-index: 1;
-    Top: 300px;
+    bottom: 0px;
     left: 0px;
     opacity: 0%;
     transition: all 0.5s ease;
 }
 
-.title2:hover .tooltip {
-    visibility: visible;
+.title2:hover .title2tooltip {
     opacity: 100%;
 }
 
@@ -97,7 +92,7 @@ body {
     animation: number 0.8s 0.9s ease both;
 }
 
-.number {
+.number0, .number1, .number2, .number3 {
     display: inline-block;
     text-decoration: none;
     color: black;
@@ -105,32 +100,43 @@ body {
     transition: all 0.4s ease;
 }
 
-.number:hover {
-    transform: scaleY(1.7);
-    color: white;
-    text-shadow:
-    -1.5px -1.5px 0 black,  
-    1.5px -1.5px 0 black,
-    -1.5px  1.5px 0 black,
-    1.5px  1.5px 0 black; 
-}
-
-.number1 {
-    display: inline-block;
-    text-decoration: none;
-    color: black;
-    letter-spacing: -5px;
-    transition: all 0.4s ease;
-}
-
-.number1:hover {
+.number0-container:hover .number0,
+.number1-container:hover .number1,
+.number2-container:hover .number2,
+.number3-container:hover .number3 {
     transform: scaleY(1.7) translateY(55px);
     color: white;
     text-shadow:
     -1.5px -1.5px 0 black,  
     1.5px -1.5px 0 black,
     -1.5px  1.5px 0 black,
-    1.5px  1.5px 0 black; 
+    1.5px  1.5px 0 black;
+}
+
+.number1-container:hover .number1,
+.number2-container:hover .number2,
+.number3-container:hover .number3 {
+    transform: scaleY(1.7);
+}
+
+.number0-container:hover .number0tooltip,
+.number1-container:hover .number1tooltip,
+.number2-container:hover .number2tooltip,
+.number3-container:hover .number3tooltip {
+    pointer-events: none;
+    opacity: 100%;
+}
+
+.number0tooltip, .number1tooltip, .number2tooltip, .number3tooltip {
+    color: black;
+    font-size: 70pt;
+    letter-spacing: 0px;
+    line-height: 72pt;
+    position: relative;
+    top: -300px;
+    left: 0;
+    opacity: 0%;
+    transition: all 0.5s ease;
 }
 
 #cubeCanvas {

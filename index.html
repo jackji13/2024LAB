@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>PORJECTS</title>
+        <title>STUDIO / LAB PORJECTS</title>
         <link rel="stylesheet" href="github-style.css">
         <!-- <link rel="icon" href="assets/icon.png" type="image/png"> -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,29 +27,35 @@
         </div>
 
         <div>
-            <span class="title2">CORE LAB
-                <span class="tooltip">PARSONS SCHOOL OF DESIGN<br>Core Lab Jack Ji</span>
+            <span class="title2">CORE LAB<br>STUDIO
+                <span class="title2tooltip">PARSONS SCHOOL OF DESIGN<br>Core Lab/Studio Jack Ji</span>
             </span>
         </div>
 
         <canvas id="cubeCanvas"></canvas>
 
         <div class="container">
-            <div>
-                <a class="number1" href="https://jackji13.github.io/2024LAB/project%20000/index.html">000</a>
+
+            <div class="number0-container">
+                <a class="number0" href="https://jackji13.github.io/2024LAB/project%20000/index.html">000</a>
+                <div class="number0tooltip">In Class<br>Exercise</div>
             </div>
     
-            <div>
-                <a class="number" href="https://jackji13.github.io/2024LAB/project%20001/index.html">001</a>
+            <div class="number1-container">
+                <a class="number1" href="https://jackji13.github.io/2024LAB/project%20001/index.html">001</a>
+                <div class="number1tooltip">Exercise:<br>DOM</div>
             </div>
     
-            <div>
-                <a class="number" href="https://jackji13.github.io/2024LAB/project%20001/index.html">002</a>
+            <div class="number2-container">
+                <a class="number2" href="https://jackji13.github.io/2024LAB/project%20002/index.html">002</a>
+                <div class="number2tooltip">Self As<br>System</div>
             </div>
     
-            <div>
-                <a class="number" href="https://jackji13.github.io/2024LAB/project%20001/index.html">003</a>
+            <div class="number3-container">
+                <a class="number3" href="https://jackji13.github.io/2024LAB/project%20003/index.html">003</a>
+                <div class="number3tooltip">City as<br>System</div>
             </div>
+    
         </div>
 
         <script>
@@ -57,12 +63,12 @@
             const cubeCanvas = document.getElementById('cubeCanvas');
     
             number1.addEventListener('mouseenter', () => {
-                cubeCanvas.style.transition = 'transform 0.8s ease'; // Ensure smooth transition
-                cubeCanvas.style.transform = 'translateX(250px)';    // Move canvas down by 100px
+                cubeCanvas.style.transition = 'transform 0.8s ease';
+                cubeCanvas.style.transform = 'translateX(250px)';
             });
     
             number1.addEventListener('mouseleave', () => {
-                cubeCanvas.style.transform = 'translateX(0px)';      // Reset canvas to original position
+                cubeCanvas.style.transform = 'translateX(0px)';
             });
         </script>
 
