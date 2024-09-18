@@ -1,0 +1,129 @@
+/* * {
+    border: 2px solid red;
+} */
+
+body {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    font-family: "Anton";
+    font-size: 230pt;
+    overflow-x: hidden;
+}
+
+.title {
+    position: fixed;
+    left: 0px;
+    top: 8px;
+    display: inline-block;
+    letter-spacing: -5px;
+    line-height: 275px;
+    animation: title 1.3s ease both;
+}
+
+@keyframes title {
+    0% {
+        transform: translateY(-350px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    right: 10px;
+    top: -85px;
+    animation: number 0.8s 0.9s ease both;
+}
+
+.number1, .number2, .number3, .number4, .number5 {
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    letter-spacing: -5px;
+    transition: all 0.4s ease;
+}
+
+.number1-container:hover .number1,
+.number2-container:hover .number2,
+.number3-container:hover .number3,
+.number4-container:hover .number4,
+.number5-container:hover .number5 {
+    transform: scaleY(1.7) translateY(55px);
+    color: white;
+    text-shadow:
+    -1.5px -1.5px 0 black,  
+    1.5px -1.5px 0 black,
+    -1.5px  1.5px 0 black,
+    1.5px  1.5px 0 black;
+}
+
+.number1-container:hover .number1,
+.number2-container:hover .number2,
+.number3-container:hover .number3,
+.number4-container:hover .number4,
+.number5-container:hover .number5 {
+    transform: scaleY(1.7);
+}
+
+.number1-container:hover .number1tooltip,
+.number2-container:hover .number2tooltip,
+.number3-container:hover .number3tooltip,
+.number4-container:hover .number4tooltip,
+.number5-container:hover .number5tooltip {
+    pointer-events: none;
+    opacity: 100%;
+}
+
+.number1tooltip, .number2tooltip, .number3tooltip, .number4tooltip, .number5tooltip {
+    color: black;
+    font-size: 70pt;
+    letter-spacing: 0px;
+    line-height: 72pt;
+    position: relative;
+    top: -300px;
+    left: 0;
+    opacity: 0%;
+    transition: all 0.5s ease;
+}
+
+#cubeCanvas {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: -1;
+    top: -35vh;
+    transition: transform 0.8s ease;
+    animation: cube 1.3s ease both;
+}
+
+@keyframes cube {
+    0% {
+        left: -30vw;
+        opacity: 0;
+    }
+
+    100% {
+        left: 5vw;
+        opacity: 1;
+    }
+}
+
+@keyframes number {
+    0% {
+        right: -400px;
+        opacity: 0;
+    }
+
+    100% {
+        right: 8px;
+        opacity: 1;
+    }
+}

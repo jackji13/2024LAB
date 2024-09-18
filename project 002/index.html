@@ -1,0 +1,67 @@
+    <!DOCTYPE html>
+    <html lang="en">
+        
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>STUDIO / LAB PORJECTS</title>
+        <link rel="stylesheet" href="style.css">
+        <!-- <link rel="icon" href="assets/icon.png" type="image/png"> -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <div>
+            <a class="title">SELF AS<br>SYSTEM<br>5 IN 5</a>
+        </div>
+
+        <canvas id="cubeCanvas"></canvas>
+
+        <div class="container">
+
+            <div class="number1-container">
+                <a class="number1" href="https://jackji13.github.io/2024LAB/project%20002/5in5Number1/index.html">001</a>
+                <div class="number1tooltip">Facial<br>expressions<br>and meme</div>
+            </div>
+    
+            <div class="number2-container">
+                <a class="number2" href="https://jackji13.github.io/2024LAB/project%20002/5in5Number2/index.html">002</a>
+                <div class="number2tooltip">My own<br>AI chatbot</div>
+            </div>
+    
+            <div class="number3-container">
+                <a class="number3" href="https://jackji13.github.io/2024LAB/project%20002/5in5Number3/index.html">003</a>
+                <div class="number3tooltip">Frequently<br>used words<br>sculpture</div>
+            </div>
+
+            <div class="number4-container">
+                <a class="number4" href="https://jackji13.github.io/2024LAB/project%20002/5in5Number4/index.html">004</a>
+                <div class="number4tooltip">QR codes<br>painting</div>
+            </div>
+
+            <div class="number5-container">
+                <a class="number5" href="https://jackji13.github.io/2024LAB/project%20002/5in5Number5/index.html">005</a>
+                <div class="number5tooltip">City as<br>System</div>
+            </div>
+    
+        </div>
+
+        <script>
+            const number1 = document.querySelector('.container');
+            const cubeCanvas = document.getElementById('cubeCanvas');
+    
+            number1.addEventListener('mouseenter', () => {
+                cubeCanvas.style.transition = 'transform 0.8s ease';
+                cubeCanvas.style.transform = 'translateX(250px)';
+            });
+    
+            number1.addEventListener('mouseleave', () => {
+                cubeCanvas.style.transform = 'translateX(0px)';
+            });
+        </script>
+
+    </body>
+
+    </html>
