@@ -11,8 +11,27 @@ body {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  font-family: 'Nanum Gothic Coding', monospace;
-  font-weight: 400;
-  font-size: 12pt;
+  font-family: "Noto Sans SC", sans-serif;
+  font-size: 8pt;
+  font-weight: 900;
+  background-color: #000;
   color: #17f700;
+  text-shadow: #17f700 0 0 5px;
+}
+
+#ascii-output {
+  white-space: pre;
+  animation: ascii 1s 2s ease both;
+}
+
+@keyframes ascii {
+  0% {
+    opacity: 0;
+    line-height: 2;
+  }
+
+  100% {
+    opacity: 1;
+    line-height: 1;
+  }
 }
