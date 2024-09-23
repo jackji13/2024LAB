@@ -3,7 +3,7 @@ const ctx = canvas.getContext('2d');
 const asciiOutput = document.getElementById('ascii-output');
 
 
-const asciiChars = '一二了上小天去好对宝海我睡哦啊';
+const asciiChars = '一二了上小天去在好对宝海我睡哦啊';
 
 const asciiWidth = 70;
 const asciiHeight = 70;
