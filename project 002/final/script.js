@@ -1,81 +1,92 @@
-const canvas = document.createElement('canvas');
-const ctx = canvas.getContext('2d');
-const asciiOutput = document.getElementById('ascii-output');
+const NodeWebcam = require("node-webcam");
+const fs = require("fs");
+const { exec } = require("child_process");
+const Jimp = require("jimp");  // Make sure Jimp is imported correctly
 
+// ASCII characters from light to dark
 const asciiChars = '一二了上小天去好对宝海我睡哦啊';
 
-const asciiWidth = 70;
-const asciiHeight = 70;
+// Webcam options
+const opts = {
+    width: 640,
+    height: 480,
+    delay: 0,
+    saveShots: true,
+    output: "jpeg",
+    callbackReturn: "location",
+    verbose: false
+};
 
-// Function to save ASCII as a .txt file
-function saveAsciiToFile(ascii) {
-    const blob = new Blob([ascii], { type: 'text/plain' });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = `ascii_frame_${Date.now()}.txt`;
-    link.click();
+// Create a webcam instance
+const Webcam = NodeWebcam.create(opts);
 
-    // Trigger the print dialog (you need user confirmation for printing)
-    const printWindow = window.open('', '', 'width=400,height=400');
-    printWindow.document.write(`<pre>${ascii}</pre>`);
-    printWindow.document.close();
-    printWindow.focus();
-    printWindow.print();
-}
+// Function to convert an image to ASCII art
+function convertToAscii(imagePath) {
+    Jimp.read(imagePath).then(image => {
+        // Crop the image to a square, keeping the center part of the image
+        const side = Math.min(image.bitmap.width, image.bitmap.height);  // Determine the shorter side (to make it square)
+        
+        // Crop the image to the center square (no stretching)
+        image.crop((image.bitmap.width - side) / 2, (image.bitmap.height - side) / 2, side, side);
 
-// Get access to webcam
-navigator.mediaDevices.getUserMedia({ video: true })
-    .then(stream => {
-        const video = document.createElement('video');
-        video.srcObject = stream;
-        video.play();
+        const asciiArt = [];
+        const width = 47;  // Set width for 58mm thermal printer
+        const height = 35;  // Set height to 35 to reduce vertical lines
 
-        video.addEventListener('loadeddata', () => {
-            canvas.width = asciiWidth;
-            canvas.height = asciiHeight;
-            updateAsciiArt(video);
+        // Resize the image without stretching, keeping width at 47 but downsampling vertical resolution
+        image.resize(width, height).greyscale();
 
-            // Every 10 seconds, save and print the ASCII frame
-            setInterval(() => {
-                const asciiText = asciiOutput.textContent;
-                saveAsciiToFile(asciiText);
-            }, 10000); // 10 seconds
-        });
-    })
-    .catch(error => {
-        console.error('Error accessing webcam:', error);
-    });
-
-// Function to update ASCII art
-function updateAsciiArt(video) {
-    ctx.save();
-    ctx.scale(-1, 1);
-    ctx.translate(-asciiWidth, 0);
-
-    ctx.drawImage(video, 0, 0, asciiWidth, asciiHeight);
-
-    ctx.restore();
-
-    const imageData = ctx.getImageData(0, 0, asciiWidth, asciiHeight);
-    const pixels = imageData.data;
-
-    let ascii = '';
-    for (let y = 0; y < asciiHeight; y++) {
-        for (let x = 0; x < asciiWidth; x++) {
-            const i = (y * asciiWidth + x) * 4;
-            const r = pixels[i];
-            const g = pixels[i + 1];
-            const b = pixels[i + 2];
-
-            const grayscale = (r + g + b) / 3;
-
-            const charIndex = Math.floor(grayscale / 255 * (asciiChars.length - 1));
-            ascii += asciiChars[charIndex];
+        for (let y = 0; y < image.bitmap.height; y++) {
+            let line = '';
+            for (let x = 0; x < image.bitmap.width; x++) {
+                const pixel = image.getPixelColor(x, y);
+                const { r, g, b } = Jimp.intToRGBA(pixel);
+                const grayscale = (r + g + b) / 3;
+                const charIndex = Math.floor(grayscale / 255 * (asciiChars.length - 1));
+                line += asciiChars[charIndex];
+            }
+            asciiArt.push(line.split('').reverse().join(''));  // Reverse each line for 180-degree rotation
         }
-        ascii += '\n';
-    }
 
-    asciiOutput.textContent = ascii;
+        // Reverse the order of the lines (rotating 180 degrees)
+        const asciiString = asciiArt.reverse().join('\n');
+        console.log(asciiString);
 
-    requestAnimationFrame(() => updateAsciiArt(video));
+        // Save ASCII to a file in the "txtfile" folder
+        const filename = `txtfile/ascii_frame_${Date.now()}.txt`;
+
+        try {
+            fs.writeFileSync(filename, asciiString);
+            console.log(`Saved ASCII art to ${filename}`);
+        } catch (err) {
+            console.error(`Error saving file: ${err}`);
+        }
+
+        // Print the ASCII art
+        printAscii(filename);
+    }).catch(err => {
+        console.error('Error processing image with Jimp:', err);
+    });
 }
+
+// Function to print the ASCII file using Notepad's /p command
+function printAscii(filename) {
+    exec(`notepad /p "${filename}"`, (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Error printing: ${error.message}`);
+            return;
+        }
+        console.log('Print command sent successfully.');
+    });
+}
+
+// Capture a frame and convert it to ASCII art every 10 seconds
+setInterval(() => {
+    Webcam.capture("current_frame", function(err, data) {
+        if (err) {
+            console.error("Error capturing image:", err);
+            return;
+        }
+        convertToAscii(data);  // Convert captured image to ASCII
+    });
+}, 10000);  // Capture every 10 seconds
