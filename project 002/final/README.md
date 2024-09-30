@@ -2,15 +2,15 @@
 
 ## Overview
 
-### Info
+#### Artwork info
 *myReplica.txt*, 2024  
 Mixed media  
 5.9" x (7.7" or 55.5' variable dimensions) x 4.3"
 
-### Description
+#### Description
 This project is an interactive wall art installation that captures webcam frames, converts them to ASCII art using Chinese characters, and prints the result on a thermal receipt printer.
 
-### Artist Statement
+#### Artist Statement
 In *myReplica.txt*, I confront the complexities of digital identity and communication through a visual and textual medium. This piece is constructed using Chinese characters drawn directly from my chat history—specifically, characters that I use most frequently. By converting these into ASCII art, I aim to create a digital "replica" of myself, a version of me rendered from the data trails of my online interactions.
 
 This work questions how deeply my chat records from WeChat truly represent who I am. Do the words we exchange online—those quick messages, fleeting responses, and data points—reflect the essence of a person? Or are they simply a stream of data, a filtered snapshot of a larger, more complex identity? The conversations we have online feel personal, yet they exist in a digital, impersonal space.
@@ -21,12 +21,12 @@ This work questions how deeply my chat records from WeChat truly represent who I
 - **ASCII Art Conversion**: Converts the captured frames to ASCII art using a predefined set of Chinese characters to represent different levels of brightness. The set of characters represent a replica of me as data.
 - **Optimized for Thermal Printer**: The ASCII art is resized and cropped to fit within the constraints of a 58mm thermal receipt printer, ensuring that the output looks correct without stretching.
 
-### Showcase
+#### Showcase
 
 ![Webcam to ASCII Art Conversion](example/ascii_art_demo.png)  
 *Example of real-time ASCII art conversion from webcam feed*
 
-### Demo Images
+#### Demo Images
 
 ![Thermal Printer Output](example/printer_output_demo.jpg)
 *Example of printed ASCII art using the POS-58 thermal receipt printer*
