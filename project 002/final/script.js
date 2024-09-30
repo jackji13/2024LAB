@@ -42,7 +42,12 @@ function convertToAscii(imagePath) {
                 const pixel = image.getPixelColor(x, y);
                 const { r, g, b } = Jimp.intToRGBA(pixel);
                 const grayscale = (r + g + b) / 3;
-                const charIndex = Math.floor(grayscale / 255 * (asciiChars.length - 1));
+
+                // Invert the grayscale value (255 - grayscale)
+                const invertedGrayscale = 255 - grayscale;
+
+                // Map the inverted grayscale value to the ASCII characters
+                const charIndex = Math.floor(invertedGrayscale / 255 * (asciiChars.length - 1));
                 line += asciiChars[charIndex];
             }
             asciiArt.push(line.split('').reverse().join(''));  // Reverse each line for 180-degree rotation
@@ -68,6 +73,7 @@ function convertToAscii(imagePath) {
         console.error('Error processing image with Jimp:', err);
     });
 }
+
 
 // Function to print the ASCII file using Notepad's /p command
 function printAscii(filename) {

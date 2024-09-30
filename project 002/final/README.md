@@ -2,49 +2,42 @@
 
 ## Overview
 
-### Title: me.txt
+### Info
+*myReplica.txt*, 2024  
+Mixed media  
+5.9" x (7.7" or 55.5' variable dimensions) x 4.3"
 
 ### Description
-This project is an interactive wall installation that captures webcam frames, converts them to ASCII art using Chinese characters, and prints the result on a 58mm thermal receipt printer.
+This project is an interactive wall art installation that captures webcam frames, converts them to ASCII art using Chinese characters, and prints the result on a thermal receipt printer.
+
+### Artist Statement
+In *myReplica.txt*, I confront the complexities of digital identity and communication through a visual and textual medium. This piece is constructed using Chinese characters drawn directly from my chat history—specifically, characters that I use most frequently. By converting these into ASCII art, I aim to create a digital "replica" of myself, a version of me rendered from the data trails of my online interactions.
+
+This work questions how deeply my chat records from WeChat truly represent who I am. Do the words we exchange online—those quick messages, fleeting responses, and data points—reflect the essence of a person? Or are they simply a stream of data, a filtered snapshot of a larger, more complex identity? The conversations we have online feel personal, yet they exist in a digital, impersonal space.
 
 ## Features
 
 - **Webcam Image Capture**: Automatically captures frames from the webcam every 10 seconds.
-- **ASCII Art Conversion**: Converts the captured frames to ASCII art using a predefined set of Chinese characters to represent different levels of brightness.
-- **Inverted Colors**: The ASCII art is inverted so that light areas in the image are printed with dark characters, ideal for printing on white paper with black ink.
+- **ASCII Art Conversion**: Converts the captured frames to ASCII art using a predefined set of Chinese characters to represent different levels of brightness. The set of characters represent a replica of me as data.
 - **Optimized for Thermal Printer**: The ASCII art is resized and cropped to fit within the constraints of a 58mm thermal receipt printer, ensuring that the output looks correct without stretching.
-- **Wall-Mounted Printer Installation**: Designed for art installations where the printer is mounted on a wall, with text output rotated 180 degrees for optimal viewing when printed.
 
-### Usages
-
-- **Real-Time Art Generation**: This project can be used to create real-time ASCII art from webcam feeds, printing the result as an ongoing artistic output.
-- **Interactive Installations**: Ideal for art galleries or public installations, where viewers can see their live image converted to ASCII art and printed instantly.
-  
 ### Showcase
 
-![Webcam to ASCII Art Conversion](showcase/ascii_art_demo.png)  
+![Webcam to ASCII Art Conversion](example/ascii_art_demo.png)  
 *Example of real-time ASCII art conversion from webcam feed*
 
 ### Demo Images
 
-![Thermal Printer Output](showcase/printer_output_demo.png)  
+![Thermal Printer Output](example/printer_output_demo.jpg)
 *Example of printed ASCII art using the POS-58 thermal receipt printer*
 
 ## Technology
 
-### Tech Stack
-
-- **Node.js**: Handles the backend processing, including capturing webcam frames and converting them to ASCII art.
-- **Jimp**: A JavaScript image processing library used to manipulate the captured webcam frames, converting them to grayscale and resizing them to fit within the printer's constraints.
-- **Node-Webcam**: A Node.js library for interfacing with the webcam, capturing images at set intervals.
-- **Notepad (Windows)**: Used to send the ASCII art to the printer via the command line.
-
-### Tools & External Libraries
-
-- **Node-Webcam**: For capturing webcam images.
-- **Jimp**: For image manipulation, including cropping, resizing, and converting to grayscale.
-- **child_process (Node.js)**: For executing the Notepad printing command in Windows.
-- **Thermal Receipt Printer**: A 58mm printer (e.g., POS-58) for outputting the ASCII art.
+- **Node.js**: Handles backend processing, including capturing webcam frames, converting them to ASCII art, and sending the output to the printer.
+- **Jimp**: For image manipulation (cropping, resizing, and grayscale conversion).
+- **Node-Webcam**: Captures real-time images from the webcam.
+- **Notepad (Windows)**: Used to send the ASCII art to the thermal printer via the command line.
+- **Thermal Receipt Printer**: Outputs the ASCII art (e.g., POS-58).
 
 ## Credits
 
