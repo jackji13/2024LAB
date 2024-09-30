@@ -38,9 +38,10 @@ This work questions how deeply my chat records from WeChat truly represent who I
 - **Node-Webcam**: Captures real-time images from the webcam.
 - **Notepad (Windows)**: Used to send the ASCII art to the thermal printer via the command line.
 - **Thermal Receipt Printer**: Outputs the ASCII art (e.g., POS-58).
+- **Physical Installation**: The installation is built using custom 3D-printed PLA parts and aluminum extrusion, housing the thermal printer, mini PC, and webcam that run the system in real-time.
 
 ## Credits
 
-- **Jack Ji**: Project author and developer, responsible for the concept and implementation of the ASCII art conversion and printing system.
+- **Jack Ji**: Project author and developer, responsible for the concept and implementation of the ASCII art conversion and printing system, as well as the creation of the physical installation.
 - **Jimp (JavaScript Image Manipulation Program)**: Used for image processing, developed by various contributors in the open-source community.
 - **Node-Webcam**: Webcam integration library used to capture real-time images, developed and maintained by the Node.js community.
