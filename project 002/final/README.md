@@ -10,11 +10,6 @@ Mixed media
 #### Description
 This project is an interactive wall art installation that captures webcam frames, converts them to ASCII art using Chinese characters, and prints the result on a thermal receipt printer.
 
-#### Artist Statement
-In *myReplica.txt*, I confront the complexities of digital identity and communication through a visual and textual medium. This piece is constructed using Chinese characters drawn directly from my chat history—specifically, characters that I use most frequently. By converting these into ASCII art, I aim to create a digital "replica" of myself, a version of me rendered from the data trails of my online interactions.
-
-This work questions how deeply my chat records from WeChat truly represent who I am. Do the words we exchange online—those quick messages, fleeting responses, and data points—reflect the essence of a person? Or are they simply a stream of data, a filtered snapshot of a larger, more complex identity? The conversations we have online feel personal, yet they exist in a digital, impersonal space.
-
 ## Features
 
 - **Webcam Image Capture**: Automatically captures frames from the webcam every 10 seconds.
