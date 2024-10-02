@@ -57,6 +57,12 @@ body {
   position: relative;
 }
 
+.image-container {
+  position: relative;
+  width: 600px;
+  
+}
+
 #canvasOverlay {
   position: absolute;
   top: 50%;
