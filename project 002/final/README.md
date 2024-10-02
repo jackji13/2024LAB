@@ -29,7 +29,15 @@ This work questions how deeply my chat records from WeChat truly represent who I
 #### Demo Images
 
 ![Thermal Printer Output](example/printer_output_demo.jpg)
-*Example of printed ASCII art using the POS-58 thermal receipt printer*
+*Example of printed ASCII art using the thermal receipt printer*
+
+#### Install Shots
+
+![Install Shot](example/shot1.jpg)
+*FInal installation shot full view*
+
+![Install Shots](example/shot2.jpg)
+*FInal installation shot close up*
 
 ## Technology
 
