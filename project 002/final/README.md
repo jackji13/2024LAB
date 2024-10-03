@@ -68,6 +68,6 @@ The creation of *myReplica.txt* involved several key steps:
 ## Credits
 
 - **Jack Ji**: Project author and developer, responsible for the concept and implementation of the ASCII art conversion and printing system.
-- **WeChatMsg (by LC044 https://github.com/LC044/WeChatMsg)**: Used for exporting chat history from WeChat, contributing to the selection of ASCII characters from frequent chat words.
+- **WeChatMsg (by LC044 https://github.com/LC044/WeChatMsg)**: Used for exporting chat history from WeChat in csv and json format.
 - **Jimp (JavaScript Image Manipulation Program)**: Used for image processing, developed by various contributors in the open-source community.
 - **Node-Webcam**: Webcam integration library used to capture real-time images, developed and maintained by the Node.js community.
