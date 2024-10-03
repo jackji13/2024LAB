@@ -16,3 +16,19 @@ body {
     overflow: hidden;
 }
 
+#checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(30, 1fr);
+    grid-template-rows: repeat(30, 1fr);
+    gap: 0px;
+    justify-content: center;
+}
+
+input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+}
+
+input[type="checkbox"]:checked {
+    background-color: black;
+}
