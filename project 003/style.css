@@ -1,6 +1,6 @@
-* {
+/* * {
     border: 2px solid red;
-}
+} */
 
 body {
     width: 100vw;
@@ -18,17 +18,16 @@ body {
 
 #checkbox-grid {
     display: grid;
-    grid-template-columns: repeat(30, 1fr);
-    grid-template-rows: repeat(30, 1fr);
-    gap: 0px;
+    grid-template-columns: repeat(50, 1fr);
+    grid-template-rows: repeat(50, 1fr);
     justify-content: center;
 }
 
 input[type="checkbox"] {
+    margin: 1px;
     width: 15px;
     height: 15px;
-}
-
-input[type="checkbox"]:checked {
-    background-color: black;
+    pointer-events: none;
+    appearance: auto;
+    -webkit-appearance: checkbox;
 }

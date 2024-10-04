@@ -1,13 +1,13 @@
 const video = document.getElementById('webcam');
 const checkboxGrid = document.getElementById('checkbox-grid');
-const gridSize = 30;
+const gridSize = 50;
 
 // Create the checkbox grid
 function createCheckboxGrid() {
     for (let i = 0; i < gridSize * gridSize; i++) {
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
-        checkbox.disabled = true; // Disable checkbox so it can't be manually clicked
+        // Remove disabled attribute
         checkboxGrid.appendChild(checkbox);
     }
 }
@@ -53,7 +53,7 @@ function updateCheckboxes() {
 }
 
 video.addEventListener('play', () => {
-    setInterval(updateCheckboxes, 100);
+    setInterval(updateCheckboxes, 10);
 });
 
 createCheckboxGrid();
