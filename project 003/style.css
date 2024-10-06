@@ -1,24 +1,23 @@
-* {
+/* * {
     border: 2px solid red;
-}
+} */
 
 body {
     width: 100vw;
-    height: 200vh; /* Increase height to enable scrolling */
+    height: 200vh;
     position: relative;
     margin: 0px;
     padding: 0px;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-x: hidden;
 }
 
-/* Lock the video and grid in the center of the screen */
 #checkbox-grid {
-    position: fixed; /* Keep the elements in a fixed position on the screen */
+    position: fixed;
     top: 50%;
     left: 50%;
     display: grid;
     justify-content: center;
-    transform: translate(-50%, -50%); /* Center the elements */
+    transform: translate(-50%, -50%);
 }
 
 #webcam {
