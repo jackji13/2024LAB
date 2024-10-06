@@ -1,33 +1,32 @@
-/* * {
+* {
     border: 2px solid red;
-} */
+}
 
 body {
     width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0px;
-    left: 0px;
+    height: 200vh; /* Increase height to enable scrolling */
+    position: relative;
     margin: 0px;
     padding: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
+/* Lock the video and grid in the center of the screen */
 #checkbox-grid {
+    position: fixed; /* Keep the elements in a fixed position on the screen */
+    top: 50%;
+    left: 50%;
     display: grid;
-    grid-template-columns: repeat(50, 1fr);
-    grid-template-rows: repeat(50, 1fr);
     justify-content: center;
+    transform: translate(-50%, -50%); /* Center the elements */
+}
+
+#webcam {
+    opacity: 0;
 }
 
 input[type="checkbox"] {
-    margin: 1px;
-    width: 15px;
-    height: 15px;
-    pointer-events: none;
     appearance: auto;
     -webkit-appearance: checkbox;
+    margin: 0.5px;
 }
