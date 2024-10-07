@@ -6,8 +6,8 @@ body {
     width: 100vw;
     height: 200vh;
     position: relative;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     overflow-x: hidden;
 }
 
@@ -28,4 +28,30 @@ input[type="checkbox"] {
     appearance: auto;
     -webkit-appearance: checkbox;
     margin: 0.5px;
+}
+
+.textContainer {
+    position: fixed;
+    bottom: 4vh;
+    left: 50vw;
+    width: 200px;
+    height: 50px;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+p {
+    font-family: "Nanum Gothic Coding", monospace;
+    font-weight: 400;
+    font-size: 16pt;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+}
+
+.arrow {
+    transform: rotate(90deg);
 }
