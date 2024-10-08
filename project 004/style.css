@@ -1,31 +1,81 @@
-/* * {
+* {
     border: 2px solid red;
-} */
+}
 
 body {
     width: 100vw;
-    height: 200vh;
+    height: 300vh;
     position: relative;
     margin: 0px;
     padding: 0px;
     overflow-x: hidden;
+    background-color: black;
 }
 
-#checkbox-grid {
+.posterContainer {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    display: grid;
-    justify-content: center;
+    top: 50vh;
+    left: 50vw;
     transform: translate(-50%, -50%);
+    width: 32vw;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 }
 
-#webcam {
-    opacity: 0;
+#title {
+    width: 70%;
+    min-height: 15%;  /* Set the initial height */
+    max-height: 18%;  /* Allow the height to expand by 20% */
+    font-family: "cofo-peshka-variable", sans-serif;
+    font-variation-settings: "slnt" -15, "wght" 1900, "wdth" 130;
+    font-size: 5vh;
+    color: #17f700;
+    overflow-wrap: break-word; /* Breaks long words to the next line */
+    white-space: normal; /* Allows the text to wrap onto the next line */
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* Center the text horizontally */
+    padding: 10px;
+    overflow: hidden;
+    transition: height 0.3s ease; /* Smooth transition for height changes */
 }
 
-input[type="checkbox"] {
-    appearance: auto;
-    -webkit-appearance: checkbox;
-    margin: 0.5px;
+/* Style to adjust height dynamically if content overflows */
+#title.expanded {
+    height: auto; /* Let the height grow */
+    max-height: 18%; /* Limit the expansion to 20% */
+}
+
+#object {
+    width: 100%;
+    height: 70%;
+}
+
+#text {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 70%;
+    height: 15%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+/* Input field styling */
+#inputField {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ffffff;
+    background-color: transparent;
+    color: #ffffff;
+    outline: none;
+    width: 200px;  /* Adjust the width here */
 }
