@@ -20,7 +20,7 @@ p {
 }
 
 .posterContainer {
-    position: fixed; /* Keep fixed positioning for the scroll interaction */
+    position: fixed;
     top: 50vh;
     left: 50vw;
     transform: translate(-50%, -50%);
@@ -29,15 +29,15 @@ p {
     background-color: rgb(0, 0, 0);
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Ensure the title, object, and text are spread evenly */
+    justify-content: space-between;
     align-items: center;
-    overflow: hidden; /* Ensure no overflow out of the container */
+    overflow: hidden;
 }
 
 #title {
     width: 100%;
-    min-height: 10%;  /* Initial height set to 10% */
-    max-height: 40vh; /* Cap the height to 40% of the viewport height */
+    min-height: 10%;
+    max-height: 40vh;
     font-family: "cofo-peshka-variable", sans-serif;
     font-variation-settings: "slnt" -15, "wght" 1900, "wdth" 130;
     font-size: 36pt;
@@ -55,16 +55,16 @@ p {
 
 #object {
     width: 100%;
-    flex-grow: 1;    /* Object will take up remaining available space */
-    flex-shrink: 1;  /* Object will shrink when title grows */
-    min-height: 50%; /* Initial minimum height is 50% */
-    transition: height 0.3s ease; /* Smooth transition for height change */
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-height: 50%;
+    transition: height 0.3s ease;
 }
 
 #text {
     width: 80%;
     height: auto;
-    max-height: 40vh; /* Cap the text height to 40vh */
+    max-height: 40vh;
     padding: 10px;
     font-size: 12pt;
     color: #ffffff;
@@ -72,7 +72,6 @@ p {
     text-align: justify;
 }
 
-/* Input field styling for title */
 #titleInputField {
     position: fixed;
     top: 10px;
@@ -86,12 +85,11 @@ p {
     color: #000000;
     outline: none;
     width: 15vw;
-    max-height: 40vh; /* Cap the height to 40vh */
-    overflow-y: auto; /* Add vertical scrollbar when needed */
-    resize: none; /* Prevent manual resizing */
+    max-height: 40vh;
+    overflow-y: auto;
+    resize: none;
 }
 
-/* Input field styling for text */
 #textInputField {
     position: fixed;
     left: 10px;
@@ -104,8 +102,8 @@ p {
     color: #000000;
     outline: none;
     width: 15vw;
-    max-height: 40vh; /* Cap the height to 40vh */
-    overflow-y: auto; /* Add vertical scrollbar when needed */
-    resize: none; /* Prevent manual resizing */
-    top: 60px; /* Initial position for the text input (just below titleInput) */
+    max-height: 40vh;
+    overflow-y: auto;
+    resize: none;
+    top: 60px;
 }
