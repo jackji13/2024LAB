@@ -1,13 +1,38 @@
-// Select the title div and create an input field
 const titleDiv = document.getElementById('title');
-const input = document.createElement('input');
-input.id = 'inputField'; // Assign an id so it can be styled via CSS
-input.placeholder = 'Type something for the title'; // Set the placeholder text
+const textDiv = document.getElementById('text');
 
-// Append the input field to the body
-document.body.appendChild(input);
+const titleInput = document.createElement('textarea');
+titleInput.id = 'titleInputField';
+titleInput.placeholder = 'Type something for the title';
 
-// Listen for user input and update the title div
-input.addEventListener('input', (event) => {
-    titleDiv.textContent = event.target.value; // Reflect the input text in the title div
+const textInput = document.createElement('textarea');
+textInput.id = 'textInputField';
+textInput.placeholder = 'Type something for the text';
+document.body.appendChild(titleInput);
+document.body.appendChild(textInput);
+
+function adjustHeight(element, maxHeight) {
+    element.style.height = 'auto';
+    const newHeight = Math.min(element.scrollHeight, maxHeight);
+    element.style.height = `${newHeight}px`;
+}
+
+function adjustTextInputPosition() {
+    const titleInputHeight = titleInput.offsetHeight;
+    textInput.style.top = `${titleInputHeight + 20}px`;
+}
+
+adjustTextInputPosition();
+
+titleInput.addEventListener('input', (event) => {
+    titleDiv.textContent = event.target.value;
+    adjustHeight(titleInput, window.innerHeight * 0.4);
+    adjustHeight(titleDiv, window.innerHeight * 0.4);
+    adjustTextInputPosition();
+});
+
+textInput.addEventListener('input', (event) => {
+    textDiv.textContent = event.target.value;
+    adjustHeight(textInput, window.innerHeight * 0.4);
+    adjustHeight(textDiv, window.innerHeight * 0.4);
 });

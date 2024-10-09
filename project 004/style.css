@@ -1,7 +1,3 @@
-* {
-    border: 2px solid red;
-}
-
 body {
     width: 100vw;
     height: 300vh;
@@ -9,73 +5,107 @@ body {
     margin: 0px;
     padding: 0px;
     overflow-x: hidden;
-    background-color: black;
+    background-color: rgb(255, 255, 255);
+}
+
+p {
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    font-family: "cofo-peshka-variable", sans-serif;
+    font-variation-settings: "slnt" -15, "wght" 1900, "wdth" 130;
+    font-size: 26pt;
+    color: #000000;
 }
 
 .posterContainer {
-    position: fixed;
+    position: fixed; /* Keep fixed positioning for the scroll interaction */
     top: 50vh;
     left: 50vw;
     transform: translate(-50%, -50%);
     width: 32vw;
     height: 90vh;
+    background-color: rgb(0, 0, 0);
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between; /* Ensure the title, object, and text are spread evenly */
     align-items: center;
+    overflow: hidden; /* Ensure no overflow out of the container */
 }
 
 #title {
-    width: 70%;
-    min-height: 15%;  /* Set the initial height */
-    max-height: 18%;  /* Allow the height to expand by 20% */
+    width: 100%;
+    min-height: 10%;  /* Initial height set to 10% */
+    max-height: 40vh; /* Cap the height to 40% of the viewport height */
     font-family: "cofo-peshka-variable", sans-serif;
     font-variation-settings: "slnt" -15, "wght" 1900, "wdth" 130;
-    font-size: 5vh;
+    font-size: 36pt;
     color: #17f700;
-    overflow-wrap: break-word; /* Breaks long words to the next line */
-    white-space: normal; /* Allows the text to wrap onto the next line */
+    overflow-wrap: break-word;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
-    align-items: center;
-    text-align: center; /* Center the text horizontally */
+    align-items: flex-start;
+    text-align: center;
     padding: 10px;
     overflow: hidden;
-    transition: height 0.3s ease; /* Smooth transition for height changes */
-}
-
-/* Style to adjust height dynamically if content overflows */
-#title.expanded {
-    height: auto; /* Let the height grow */
-    max-height: 18%; /* Limit the expansion to 20% */
+    transition: height 0.3s ease;
 }
 
 #object {
     width: 100%;
-    height: 70%;
+    flex-grow: 1;    /* Object will take up remaining available space */
+    flex-shrink: 1;  /* Object will shrink when title grows */
+    min-height: 50%; /* Initial minimum height is 50% */
+    transition: height 0.3s ease; /* Smooth transition for height change */
 }
 
 #text {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 70%;
-    height: 15%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
+    width: 80%;
+    height: auto;
+    max-height: 40vh; /* Cap the text height to 40vh */
+    padding: 10px;
+    font-size: 12pt;
+    color: #ffffff;
+    overflow-wrap: break-word;
+    text-align: justify;
 }
 
-/* Input field styling */
-#inputField {
+/* Input field styling for title */
+#titleInputField {
     position: fixed;
     top: 10px;
     left: 10px;
     padding: 10px;
-    font-size: 16px;
-    border: 2px solid #ffffff;
+    font-family: "Nanum Gothic Coding", monospace;
+    font-weight: 400;
+    font-size: 12pt;
+    border: 2px solid #17f700;
     background-color: transparent;
-    color: #ffffff;
+    color: #000000;
     outline: none;
-    width: 200px;  /* Adjust the width here */
+    width: 15vw;
+    max-height: 40vh; /* Cap the height to 40vh */
+    overflow-y: auto; /* Add vertical scrollbar when needed */
+    resize: none; /* Prevent manual resizing */
+}
+
+/* Input field styling for text */
+#textInputField {
+    position: fixed;
+    left: 10px;
+    padding: 10px;
+    font-family: "Nanum Gothic Coding", monospace;
+    font-weight: 400;
+    font-size: 12pt;
+    border: 2px solid #17f700;
+    background-color: transparent;
+    color: #000000;
+    outline: none;
+    width: 15vw;
+    max-height: 40vh; /* Cap the height to 40vh */
+    overflow-y: auto; /* Add vertical scrollbar when needed */
+    resize: none; /* Prevent manual resizing */
+    top: 60px; /* Initial position for the text input (just below titleInput) */
 }
