@@ -1,31 +1,31 @@
-/* * {
+* {
     border: 2px solid red;
-} */
+}
 
 body {
     width: 100vw;
-    height: 200vh;
-    position: relative;
+    height: 100vh;
+    position: absolute;
+    top: 0px;
+    left: 0px;
     margin: 0px;
     padding: 0px;
     overflow-x: hidden;
 }
 
-#checkbox-grid {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    display: grid;
-    justify-content: center;
+.backgroundVideo {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 0;
+}
+
+.svgClip {
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
     transform: translate(-50%, -50%);
-}
-
-#webcam {
-    opacity: 0;
-}
-
-input[type="checkbox"] {
-    appearance: auto;
-    -webkit-appearance: checkbox;
-    margin: 0.5px;
+    z-index: 1;
 }
