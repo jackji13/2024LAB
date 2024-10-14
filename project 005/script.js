@@ -1,4 +1,4 @@
-const apiKey = '';
+const apiKey = 'm74f3CQvQIpViRDa4PzFhmfttcZ8pENZSqlfgOFf';
 const neoWsEndpoint = `https://api.nasa.gov/neo/rest/v1/feed?start_date=2024-10-10&end_date=2024-10-13&api_key=${apiKey}`;
 
 fetch(neoWsEndpoint)
