@@ -15,12 +15,56 @@
 
     <body>
 
-        <div class="backgroundVideo">
-            <video></video>
-        </div>
+        <div class="container">
 
-        <div class="svgClip"></div>
-      
+            <div class="sidebar">
+                <h3>NEAR EARTH OBJECTS</h3>
+                <ul id="neo-list"></ul>
+            </div>
+
+            <div class="content">
+
+                <p id="description">This website provides an interactive visualization of Near-Earth 
+                    Objects (NEOs) that are currently being tracked by NASA. NEOs are asteroids or comets 
+                    whose orbits bring them into close proximity with Earth, making them subjects of 
+                    great scientific interest. These objects are closely monitored by space agencies 
+                    around the world to evaluate any potential risks they might pose to our planet and 
+                    to gain deeper insights into their composition, trajectory, and behavior. By 
+                    studying NEOs, scientists can better understand the dynamics of our solar system 
+                    and the history of cosmic collisions that have shaped planetary bodies.<br><br>
+                    This visualization uses data from the NASA NEOs API, which provides real-time information 
+                    on asteroids and comets that come close to Earth. By clicking on any NEO name from the 
+                    list on the left, you can explore detailed information about its size, speed, and how 
+                    close it will pass by Earth. The size of each NEO is represented visually, compared 
+                    to the silhouette of an average human figure, allowing you to grasp the scale of 
+                    these space objects. You will also see key statistics such as the NEO's velocity, 
+                    miss distance, and the date of its close approach. This tool is designed to offer 
+                    a clear, intuitive understanding of how large these objects are.
+                </p>
+
+                <div class="visualization">
+
+                    <svg id="scale-svg"></svg>
+
+                    <div id="human-container">
+                        <object id="human-svg" data="assets/silhouette.svg" type="image/svg+xml"></object>
+                    </div>
+
+                    <div id="neo-container">
+                        <svg id="neo-svg"></svg>
+                    </div>
+
+                </div>
+
+                <div class="data">
+                    <h2 id="neo-name"></h2>
+                    <ul id="neo-data-list"></ul>
+                </div>
+
+            </div>
+
+        </div>
+    
         <script src="script.js"></script>
 
     </body>
