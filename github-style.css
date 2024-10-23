@@ -92,7 +92,7 @@ body {
     animation: number 0.8s 0.9s ease both;
 }
 
-.number0, .number1, .number2, .number3, .number4, .number5, .number6 {
+.number0, .number1, .number2, .number3, .number4, .number5, .number6, .number7 {
     display: inline-block;
     text-decoration: none;
     color: black;
@@ -115,7 +115,8 @@ body {
 .number3-container:hover .number3,
 .number4-container:hover .number4,
 .number5-container:hover .number5,
-.number6-container:hover .number6 {
+.number6-container:hover .number6,
+.number7-container:hover .number7 {
     transform: scaleY(1.7);
     color: white;
     text-shadow:
@@ -131,12 +132,20 @@ body {
 .number3-container:hover .number3tooltip,
 .number4-container:hover .number4tooltip,
 .number5-container:hover .number5tooltip,
-.number6-container:hover .number6tooltip {
+.number6-container:hover .number6tooltip,
+.number7-container:hover .number7tooltip {
     pointer-events: none;
     opacity: 100%;
 }
 
-.number0tooltip, .number1tooltip, .number2tooltip, .number3tooltip, .number4tooltip, .number5tooltip, .number6tooltip {
+.number0tooltip,
+.number1tooltip,
+.number2tooltip,
+.number3tooltip,
+.number4tooltip,
+.number5tooltip,
+.number6tooltip,
+.number7tooltip {
     color: black;
     font-size: 70pt;
     letter-spacing: 0px;
