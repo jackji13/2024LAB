@@ -14,25 +14,26 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>   
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://unpkg.com/satellite.js/dist/satellite.min.js"></script>
 </head>
 
 <body>
 
-  <div class="container">
-  
-      <!-- Visual part at the top -->
       <div class="visual-part">
+
+        <div id="info-container">
           <div id="chart-container"></div>
+          <ul id="info-section"></ul>
+        </div>
+
           <div id="threejs-container"></div>
+
       </div>
-  
-      <!-- Horizontal list at the bottom -->
+
       <div class="horizontal-list">
           <ul id="satellite-list"></ul>
       </div>
-  
-  </div>
-  
+
   <script src="d3-chart.js"></script>
   <script src="threejs-visual.js"></script>
   
