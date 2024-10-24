@@ -6,12 +6,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const targetText = h1Element.textContent;
     
     const duration = 2000; // total duration of the animation in milliseconds
-    const frameRate = 35; // number of frames per second
+    const frameRate = 50; // number of frames per second
     const totalFrames = duration / (1000 / frameRate);
     let frame = 0;
 
     function getRandomChar() {
-        const chars = "abcdefghijklmnopqrstuvwxyz0123456789~!@#$%^&*()+=;:<>?/|";
+        const chars = "abcdefghijklmnopqrstuvwxyz0123456789~!@#$%^&*(){}[].,-_+=;:<>?/|";
         return chars[Math.floor(Math.random() * chars.length)];
     }
 

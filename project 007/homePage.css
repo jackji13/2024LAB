@@ -1,3 +1,17 @@
+@font-face {
+    font-family: 'Consola';
+    src: url('assets/fonts/consola.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Consola';
+    src: url('assets/fonts/consolab.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -22,8 +36,9 @@ body {
     transform: translate(-50%, 0%);
     width: 95vw;
     text-align: justify;
+    font-family: 'Consola', sans-serif;
+    font-size: 12pt;
     color: #ffffff;
-
 }
 
 canvas {

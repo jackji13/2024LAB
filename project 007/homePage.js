@@ -94,4 +94,4 @@ function animate() {
 }
 
 animate();
-gridGroup.position.set(-2.5, -5, 0);
+gridGroup.position.set(-2.5, -4, 0);
