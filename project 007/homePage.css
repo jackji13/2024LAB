@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: red;
+    overflow: hidden;
+}
+
+#container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6 columns */
+    grid-template-rows: repeat(2, 1fr); /* 2 rows */
+    width: 100vw;
+    height: 100vh;
+}
+
+.text {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    bottom: 3vh;
+    left: 50vw;
+    transform: translate(-50%, 0%);
+    width: 95vw;
+    text-align: justify;
+    color: #ffffff;
+
+}
+
+canvas {
+    display: block;
+}
