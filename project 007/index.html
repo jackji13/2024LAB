@@ -33,8 +33,23 @@
         surroundings.
     </p>
 
-    <script src="title.js"></script>
-    <script src="homePage.js"></script>
+    <!-- Load title.js first -->
+    <script src="title.js" defer></script>
+
+    <!-- Dynamically load homePage.js after title.js has completed -->
+    <script>
+        window.addEventListener('load', () => {
+            console.log('title.js loaded, now loading homePage.js');
+            
+            const script = document.createElement('script');
+            script.src = 'homePage.js';
+            script.defer = true;
+            script.onload = () => {
+                console.log('homePage.js loaded and executed');
+            };
+            document.body.appendChild(script);
+        });
+    </script>
 
 </body>
 

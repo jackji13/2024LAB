@@ -1,10 +1,11 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const h1Element = document.querySelector("p");
+// Directly run this code after the script is dynamically added
+const h1Element = document.querySelector("p");
 
-    if (!h1Element) return;
-
+if (!h1Element) {
+    console.error("p element not found");
+} else {
     const targetText = h1Element.textContent;
-    
+
     const duration = 2000; // total duration of the animation in milliseconds
     const frameRate = 50; // number of frames per second
     const totalFrames = duration / (1000 / frameRate);
@@ -41,4 +42,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     animateText();
-});
+}

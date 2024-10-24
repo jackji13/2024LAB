@@ -14,7 +14,7 @@ document.getElementById('container').appendChild(renderer.domElement);
 const ambientLight = new THREE.AmbientLight(0xffffff, 1.1); 
 scene.add(ambientLight);
 
-camera.position.set(0, 3, 15);
+camera.position.set(0, 3, 14);
 
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
 
