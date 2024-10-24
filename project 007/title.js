@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const h1Element = document.querySelector("p");
 
-    if (!h1Element) return; // Exit if there's no h1 element
+    if (!h1Element) return;
 
     const targetText = h1Element.textContent;
     
