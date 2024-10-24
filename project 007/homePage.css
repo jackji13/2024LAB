@@ -15,14 +15,11 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: red;
+    background-color: #f70000;
     overflow: hidden;
 }
 
 #container {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr); /* 6 columns */
-    grid-template-rows: repeat(2, 1fr); /* 2 rows */
     width: 100vw;
     height: 100vh;
 }
@@ -34,7 +31,7 @@ body {
     bottom: 3vh;
     left: 50vw;
     transform: translate(-50%, 0%);
-    width: 95vw;
+    width: 97vw;
     text-align: justify;
     font-family: 'Consola', sans-serif;
     font-size: 12pt;
