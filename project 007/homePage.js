@@ -14,7 +14,7 @@ document.getElementById('container').appendChild(renderer.domElement);
 const ambientLight = new THREE.AmbientLight(0xffffff, 1.1); 
 scene.add(ambientLight);
 
-camera.position.set(0, 3, 14);
+camera.position.set(0, 5, 20);
 
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
 
@@ -30,6 +30,7 @@ window.addEventListener('resize', () => {
 const loader = new THREE.GLTFLoader();
 let models = [];
 
+// Adjust gaps for the 10x5 grid
 const horizontalGap = 5; 
 const verticalGap = 4;   
 
@@ -55,7 +56,7 @@ function onClick(event) {
 window.addEventListener('click', onClick, false);
 
 const loadModel = (fileName, x, y) => {
-    loader.load(`assets/${fileName}.gltf`, (gltf) => {
+    loader.load(`assets/${fileName}.glb`, (gltf) => {
         const model = gltf.scene;
         model.position.set(x, y, 0);  
         model.scale.set(1, 1, 1);
@@ -67,18 +68,28 @@ const loadModel = (fileName, x, y) => {
     });
 };
 
+// Update model names for all 40 corners
 const modelNames = [
     "14NE", "14NW", "14SE", "14SW",
     "15NE", "15NW", "15SE", "15SW",
-    "16NE", "16NW", "16SE", "16SW"
+    "16NE", "16NW", "16SE", "16SW",
+    "17NE", "17NW", "17SE", "17SW",
+    "18NE", "18NW", "18SE", "18SW",
+    "19NE", "19NW", "19SE", "19SW",
+    "20NE", "20NW", "20SE", "20SW",
+    "21NE", "21NW", "21SE", "21SW",
+    "22NE", "22NW", "22SE", "22SW",
+    "23NE", "23NW", "23SE", "23SW"
 ];
 
-let col = -10;
-let row = 5;
+// Set starting position for the grid
+let col = -20; // Adjust starting position for the wider grid
+let row = 11.5;  // Adjust starting row position
 
+// Create the 10-column, 5-row grid
 modelNames.forEach((modelName, index) => {
-    const x = col + (index % 6) * horizontalGap;  
-    const y = row - Math.floor(index / 6) * verticalGap;
+    const x = col + (index % 10) * horizontalGap;  // Adjust for 10 columns
+    const y = row - Math.floor(index / 10) * verticalGap; // Adjust for 5 rows
     loadModel(modelName, x, y);
 });
 
@@ -94,4 +105,6 @@ function animate() {
 }
 
 animate();
+
+// Adjust the grid's overall position if necessary
 gridGroup.position.set(-2.5, -4, 0);

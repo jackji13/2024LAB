@@ -65,9 +65,9 @@ let displacement, customColor;
 
 // Load the GLTF model dynamically based on the modelName from the URL
 const loader = new THREE.GLTFLoader();
-loader.load(`assets/${modelName}.gltf`, function(gltf) {
+loader.load(`assets/${modelName}.glb`, function(gltf) {
     shaderModel = gltf.scene;
-    shaderModel.position.set(0, -1, 0);
+    shaderModel.position.set(0, 1, 0);
     shaderModel.scale.set(1, 1, 1);
 
     // Inside the shaderModel loading section
@@ -110,9 +110,9 @@ loader.load(`assets/${modelName}.gltf`, function(gltf) {
     scene.add(shaderModel);
 
     // Load the GLTF model without shaders (default model)
-    loader.load(`assets/${modelName}.gltf`, function(gltfDefault) {
+    loader.load(`assets/${modelName}.glb`, function(gltfDefault) {
         defaultModel = gltfDefault.scene;
-        defaultModel.position.set(0, -1, 0);
+        defaultModel.position.set(0, 1, 0);
         defaultModel.scale.set(1, 1, 1);
 
         // Make default model transparent and invisible initially
