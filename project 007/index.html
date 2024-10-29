@@ -17,6 +17,10 @@
 
 <body>
 
+    <div id="loading-screen">
+        <h1>Loading...</h1>
+    </div>
+
     <div id="container"></div>
 
     <p class="text">
@@ -34,6 +38,7 @@
     </p>
 
     <!-- Load title.js first -->
+    <script src="loading.js" defer></script>
     <script src="title.js" defer></script>
 
     <!-- Dynamically load homePage.js after title.js has completed -->

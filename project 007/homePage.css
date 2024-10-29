@@ -12,9 +12,12 @@
     font-style: normal;
 }
 
-body {
+* {
     margin: 0;
     padding: 0;
+}
+
+body {
     background-color: #f70000;
     overflow: hidden;
 }
@@ -40,4 +43,18 @@ body {
 
 canvas {
     display: block;
+}
+
+#loading-screen {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: #f70000; /* Black background */
+    color: #ffffff; /* White text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Consola', sans-serif;
+    font-size: 24px;
+    z-index: 1000; /* Ensure it's above everything else */
 }
