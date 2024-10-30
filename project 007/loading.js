@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const targetText = h1Element.textContent;
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789~!@#$%^&*()+=;:<>?/|";
     const duration = 1000;
-    const totalFrames = Math.ceil(50 * (duration / 1000)); // Combining frameRate and duration logic
+    const totalFrames = Math.ceil(40 * (duration / 1000)); // Combining frameRate and duration logic
     let frame = 0;
 
     function getRandomChar() {

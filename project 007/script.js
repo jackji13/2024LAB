@@ -34,36 +34,10 @@ controls.maxDistance = 50;
 const ambientLight = new THREE.AmbientLight(0xffffff, 1.1); // white light
 scene.add(ambientLight);
 
-// Updated vertex shader and fragment shader based on custom attributes
-const vertexShader = `
-    uniform float amplitude;
-    attribute vec3 displacement;
-    attribute vec3 customColor;
-    varying vec3 vColor;
-
-    void main() {
-        vColor = customColor;
-        vec3 newPosition = position + amplitude * displacement;
-        gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
-    }
-`;
-
-const fragmentShader = `
-    uniform vec3 color;
-    uniform float opacity;
-    varying vec3 vColor;
-
-    void main() {
-        gl_FragColor = vec4(vColor * color, opacity);
-    }
-`;
-
 // Prepare uniforms and attributes
-let originalMaterials = [];
 let shaderModel, defaultModel;
-let displacement, customColor;
 
-// Load the GLTF model dynamically based on the modelName from the URL
+// Load the high-quality GLTF model dynamically based on the modelName from the URL
 const loader = new THREE.GLTFLoader();
 loader.load(`assets/${modelName}.glb`, function(gltf) {
     shaderModel = gltf.scene;
@@ -75,8 +49,8 @@ loader.load(`assets/${modelName}.glb`, function(gltf) {
         if (child.isMesh) {
             const count = child.geometry.attributes.position.count;
 
-            displacement = new THREE.Float32BufferAttribute(count * 3, 3);
-            customColor = new THREE.Float32BufferAttribute(count * 3, 3);
+            const displacement = new THREE.Float32BufferAttribute(count * 3, 3);
+            const customColor = new THREE.Float32BufferAttribute(count * 3, 3);
 
             const color = new THREE.Color();
             for (let i = 0; i < displacement.count; i++) {
@@ -91,16 +65,34 @@ loader.load(`assets/${modelName}.glb`, function(gltf) {
             child.geometry.setAttribute('displacement', displacement);
             child.geometry.setAttribute('customColor', customColor);
 
-            originalMaterials.push(child.material.clone()); // Clone the original material for later use
-
+            // Apply shader material with custom vertex and fragment shaders
             child.material = new THREE.ShaderMaterial({
                 uniforms: {
                     amplitude: { value: 0.5 },  // Reduce amplitude for smaller distortion
                     color: { value: new THREE.Color(0x17f700) },
                     opacity: { value: 1.0 }
                 },
-                vertexShader: vertexShader,
-                fragmentShader: fragmentShader,
+                vertexShader: `
+                    uniform float amplitude;
+                    attribute vec3 displacement;
+                    attribute vec3 customColor;
+                    varying vec3 vColor;
+
+                    void main() {
+                        vColor = customColor;
+                        vec3 newPosition = position + amplitude * displacement;
+                        gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
+                    }
+                `,
+                fragmentShader: `
+                    uniform vec3 color;
+                    uniform float opacity;
+                    varying vec3 vColor;
+
+                    void main() {
+                        gl_FragColor = vec4(vColor * color, opacity);
+                    }
+                `,
                 transparent: true,
                 opacity: 1.0
             });
@@ -118,7 +110,6 @@ loader.load(`assets/${modelName}.glb`, function(gltf) {
         // Make default model transparent and invisible initially
         defaultModel.traverse((child) => {
             if (child.isMesh) {
-                child.material = originalMaterials.shift(); // Restore the original material
                 child.material.transparent = true;
                 child.material.opacity = 0.0; // Start with fully transparent
             }

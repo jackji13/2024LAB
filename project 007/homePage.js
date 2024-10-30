@@ -3,8 +3,8 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
 const renderer = new THREE.WebGLRenderer({
-    antialias: true, // Enable anti-aliasing
-    alpha: true // Optional: allows transparent backgrounds
+    antialias: true,
+    alpha: true 
 });
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -42,8 +42,8 @@ const loadingScreen = document.getElementById('loading-screen');
 
 // Track how many models have been loaded
 let modelsLoaded = 0;
-const totalModels = 40; // Since you have 40 models in total
-let allModelsRendered = false; // Flag to check if all models have been rendered
+const totalModels = 40; 
+let allModelsRendered = false; 
 
 // Function to handle clicks and redirect to details page with model name
 function onClick(event) {
@@ -63,13 +63,13 @@ function onClick(event) {
 
 window.addEventListener('click', onClick, false);
 
-// Function to load models and track loading progress
+// Function to load low-poly models and track loading progress
 const loadModel = (fileName, x, y) => {
-    loader.load(`assets/${fileName}.glb`, (gltf) => {
+    loader.load(`assets/lowpoly/${fileName}-L.glb`, (gltf) => {
         const model = gltf.scene;
         model.position.set(x, y, 0);
         model.scale.set(1, 1, 1);
-        model.name = fileName;
+        model.name = fileName; // store the filename without -L
         models.push(model);
         gridGroup.add(model);
 
@@ -78,11 +78,10 @@ const loadModel = (fileName, x, y) => {
 
         // Check if all models are loaded
         if (modelsLoaded === totalModels) {
-            // Wait for one render cycle before hiding the loading screen
             allModelsRendered = true;
         }
     }, undefined, (error) => {
-        console.error(`An error occurred while loading ${fileName}:`, error);
+        console.error(`An error occurred while loading ${fileName}-L.glb:`, error);
     });
 };
 
@@ -101,15 +100,18 @@ const modelNames = [
 ];
 
 // Set starting position for the grid
-let col = -20; // Adjust starting position for the wider grid
-let row = 11.5;  // Adjust starting row position
+let col = -20; 
+let row = 11.5;
 
 // Create the 10-column, 5-row grid
+// Create the 10-column, 4-row grid, column by column order
 modelNames.forEach((modelName, index) => {
-    const x = col + (index % 10) * horizontalGap;  // Adjust for 10 columns
-    const y = row - Math.floor(index / 10) * verticalGap; // Adjust for 5 rows
+    // Adjust for 10 columns and 4 rows
+    const x = col + Math.floor(index / 4) * horizontalGap;  // Adjust for columns
+    const y = row - (index % 4) * verticalGap;  // Adjust for rows
     loadModel(modelName, x, y);
 });
+
 
 // Animation loop (runs after all models are loaded)
 function animate() {
@@ -130,13 +132,13 @@ function animate() {
 
 // Function to hide the loading screen with a smooth transition
 function hideLoadingScreen() {
-    loadingScreen.style.transition = 'opacity 0.5s ease'; // Add smooth fade-out transition
-    loadingScreen.style.opacity = 0; // Trigger fade-out
+    loadingScreen.style.transition = 'opacity 0.5s ease'; 
+    loadingScreen.style.opacity = 0;
 
     setTimeout(() => {
-        loadingScreen.style.display = 'none'; // Hide after transition
-        allModelsRendered = false; // Reset the flag
-    }, 500); // Wait for the transition to complete
+        loadingScreen.style.display = 'none';
+        allModelsRendered = false; 
+    }, 500); 
 }
 
 // Adjust the grid's overall position if necessary
