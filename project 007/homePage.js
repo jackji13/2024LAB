@@ -94,6 +94,9 @@ const loadModel = (fileName, x, y, z) => {
         model.position.set(x, y, z);
         model.scale.set(1, 1, 1);
         model.name = fileName;
+        
+        model.rotationSpeedY = 0.0005 + Math.random() * (0.008 - 0.0005);
+        
         models.push(model);
         gridGroup.add(model);
 
@@ -175,7 +178,7 @@ function animate() {
     requestAnimationFrame(animate);
 
     models.forEach((model) => {
-        model.rotation.y += 0.001;
+        model.rotation.y += model.rotationSpeedY;
     });
 
     renderer.render(scene, camera);

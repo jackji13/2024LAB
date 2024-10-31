@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const targetText = h1Element.textContent;
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789~!@#$%^&*()+=;:<>?/|";
-    const duration = 5000;
+    const duration = 1000;
     const totalFrames = Math.ceil(40 * (duration / 1000));
     let frame = 0;
 
