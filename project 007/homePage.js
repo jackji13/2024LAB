@@ -14,7 +14,7 @@ const ambientLight = new THREE.AmbientLight(0xffffff, 1.1);
 scene.add(ambientLight);
 
 let currentView = 'gallery';
-camera.position.set(0, 11, 20);
+camera.position.set(0, 11, 23);
 camera.lookAt(0, 5, 0);
 
 const gridGroup = new THREE.Group();
@@ -119,7 +119,7 @@ const modelNames = [
 ];
 
 function arrangeGalleryView() {
-    camera.position.set(0, 11, 20);
+    camera.position.set(0, 11, 23);
     camera.lookAt(0, 5, 0);
     gridGroup.clear();
     gridGroup.position.set(-2.5, 0, 0);
@@ -133,10 +133,10 @@ function arrangeGalleryView() {
 }
 
 function arrangeStreetView() {
-    camera.position.set(20, 10, 0);
-    camera.lookAt(0, 0, -20);
+    camera.position.set(20, 43, -56);
+    camera.lookAt(0, 0, -56);
     gridGroup.clear();
-    gridGroup.position.set(8, 3, 0);
+    gridGroup.position.set(7, 3, 0);
 
     models = [];
     
