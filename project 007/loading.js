@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const targetText = h1Element.textContent;
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789~!@#$%^&*()+=;:<>?/|";
-    const duration = 1000;
-    const totalFrames = Math.ceil(40 * (duration / 1000)); // Combining frameRate and duration logic
+    const duration = 5000;
+    const totalFrames = Math.ceil(40 * (duration / 1000));
     let frame = 0;
 
     function getRandomChar() {
@@ -17,12 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const progress = frame / totalFrames;
         const numCorrectChars = Math.floor(progress * targetText.length);
         h1Element.textContent = targetText.substring(0, numCorrectChars) + 
-            targetText.substring(numCorrectChars).replace(/[^ ]/g, getRandomChar); // Replace only non-space chars
+            targetText.substring(numCorrectChars).replace(/[^ ]/g, getRandomChar);
 
         if (++frame <= totalFrames) {
             requestAnimationFrame(animateText);
         } else {
-            // Animation complete callback
             document.dispatchEvent(new CustomEvent('loadingAnimationComplete'));
         }
     }

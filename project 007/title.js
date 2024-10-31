@@ -1,4 +1,3 @@
-// Directly run this code after the script is dynamically added
 const h1Element = document.querySelector("p");
 
 if (!h1Element) {
@@ -6,8 +5,8 @@ if (!h1Element) {
 } else {
     const targetText = h1Element.textContent;
 
-    const duration = 2000; // total duration of the animation in milliseconds
-    const frameRate = 50; // number of frames per second
+    const duration = 1700;
+    const frameRate = 50;
     const totalFrames = duration / (1000 / frameRate);
     let frame = 0;
 

@@ -6,7 +6,7 @@
 }
 
 @font-face {
-    font-family: 'Consola';
+    font-family: 'ConsolaBold';
     src: url('assets/fonts/consolab.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
@@ -27,9 +27,40 @@ body {
     height: 100vh;
 }
 
+.topContainer {
+    position: absolute;
+    top: 3vh;
+    left: 50vw;
+    transform: translate(-50%, 0%);
+    width: 97vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+.title {
+    font-family: 'Consola', sans-serif;
+    font-size: 12pt;
+    color: #ffffff;
+}
+
+#galleryView, #streetView {
+    background-color: #ffffff00;
+    color: #ffffff;
+    border: 0px solid #000000;
+    font-family: 'Consola', sans-serif;
+    font-size: 12pt;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+#galleryView:hover, #streetView:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
 .text {
-    margin: 0;
-    padding: 0;
     position: absolute;
     bottom: 3vh;
     left: 50vw;
@@ -49,12 +80,16 @@ canvas {
     position: fixed;
     width: 100vw;
     height: 100vh;
-    background-color: #f70000; /* Black background */
-    color: #ffffff; /* White text */
+    background-color: #f70000;
+    color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    z-index: 1000;
+}
+
+h1 {
     font-family: 'Consola', sans-serif;
-    font-size: 24px;
-    z-index: 1000; /* Ensure it's above everything else */
+    font-size: 32px;
 }

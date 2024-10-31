@@ -1,13 +1,54 @@
-body {
-    font-family: "Nanum Gothic Coding", monospace;
-    font-weight: 400;
-    width: 100vw;
-    height: 100vh;
+@font-face {
+    font-family: 'Consola';
+    src: url('assets/fonts/consola.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ConsolaBold';
+    src: url('assets/fonts/consolab.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+* {
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
     background-color: #000000;
-    color: #17f700;
     overflow: hidden;
+}
+
+.title {
+    position: absolute;
+    top: 2vh;
+    left: 50vw;
+    transform: translate(-50%, 0%);
+    text-align: justify;
+    font-family: 'Consola', sans-serif;
+    font-size: 12pt;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.5s ease;
+}
+
+.title:hover {
+    background-color: #ffffff;
+    color: #f70000;
+}
+
+#text {
+    position: absolute;
+    bottom: 3vh;
+    left: 50vw;
+    transform: translate(-50%, 0%);
+    text-align: justify;
+    font-family: 'Consola', sans-serif;
+    font-size: 12pt;
+    color: #ffffff;
 }

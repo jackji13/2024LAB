@@ -1,10 +1,9 @@
-// Set up the basic Three.js scene, camera, and renderer
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 1000);
 
 const renderer = new THREE.WebGLRenderer({
     antialias: true,
-    alpha: true 
+    alpha: true
 });
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -14,12 +13,17 @@ document.getElementById('container').appendChild(renderer.domElement);
 const ambientLight = new THREE.AmbientLight(0xffffff, 1.1);
 scene.add(ambientLight);
 
-camera.position.set(0, 5, 20);
-
-const controls = new THREE.OrbitControls(camera, renderer.domElement);
+let currentView = 'gallery';
+camera.position.set(0, 11, 20);
+camera.lookAt(0, 5, 0);
 
 const gridGroup = new THREE.Group();
 scene.add(gridGroup);
+
+const pointLight = new THREE.PointLight(0xffffff, 0, 15);
+pointLight.position.set(0, 10, 10);
+pointLight.castShadow = true;
+scene.add(pointLight);
 
 window.addEventListener('resize', () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -30,22 +34,25 @@ window.addEventListener('resize', () => {
 const loader = new THREE.GLTFLoader();
 let models = [];
 
-// Adjust gaps for the 10x5 grid
-const horizontalGap = 5;
-const verticalGap = 4;
+const GalleryXGap = 5;
+const GalleryYGap = 4;
+
+const StreetXGap = 8;
+const StreetZGap = 6;
 
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
-// Loading screen
 const loadingScreen = document.getElementById('loading-screen');
 
-// Track how many models have been loaded
 let modelsLoaded = 0;
-const totalModels = 40; 
-let allModelsRendered = false; 
+const totalModels = 40;
+let allModelsRendered = false;
 
-// Function to handle clicks and redirect to details page with model name
+function updateRaycasterTargets() {
+    raycaster.objects = models;
+}
+
 function onClick(event) {
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
@@ -56,64 +63,114 @@ function onClick(event) {
     if (intersects.length > 0) {
         const selectedModel = intersects[0].object.parent;
         const modelName = selectedModel.name;
-        // Redirect to details.html with the selected model name in the URL
         window.location.href = `details.html?model=${encodeURIComponent(modelName)}`;
     }
 }
-
 window.addEventListener('click', onClick, false);
 
-// Function to load low-poly models and track loading progress
-const loadModel = (fileName, x, y) => {
+function onHover(intersectedModel) {
+    intersectedModel.traverse((child) => {
+        if (child.isMesh) {
+            gsap.to(child.material.color, { r: 1, g: 1, b: 1, duration: 0.5, ease: "power2.inOut" });
+            gsap.to(child.material.emissive, { r: 0.5, g: 0.5, b: 0.5, duration: 0.5, ease: "power2.inOut" });
+        }
+    });
+    gsap.to(pointLight, { intensity: 2, duration: 0.5, ease: "power2.inOut" });
+}
+
+function resetMaterial(intersectedModel) {
+    intersectedModel.traverse((child) => {
+        if (child.isMesh) {
+            gsap.to(child.material.color, { r: 0.8, g: 0.8, b: 0.8, duration: 0.5, ease: "power2.inOut" });
+            gsap.to(child.material.emissive, { r: 0, g: 0, b: 0, duration: 0.5, ease: "power2.inOut" });
+        }
+    });
+    gsap.to(pointLight, { intensity: 0, duration: 0.5, ease: "power2.inOut" });
+}
+
+const loadModel = (fileName, x, y, z) => {
     loader.load(`assets/lowpoly/${fileName}-L.glb`, (gltf) => {
         const model = gltf.scene;
-        model.position.set(x, y, 0);
+        model.position.set(x, y, z);
         model.scale.set(1, 1, 1);
-        model.name = fileName; // store the filename without -L
+        model.name = fileName;
         models.push(model);
         gridGroup.add(model);
 
-        // Increment the models loaded count
         modelsLoaded++;
-
-        // Check if all models are loaded
         if (modelsLoaded === totalModels) {
             allModelsRendered = true;
+            updateRaycasterTargets();
         }
     }, undefined, (error) => {
         console.error(`An error occurred while loading ${fileName}-L.glb:`, error);
     });
 };
 
-// Update model names for all 40 corners
 const modelNames = [
-    "14NE", "14NW", "14SE", "14SW",
-    "15NE", "15NW", "15SE", "15SW",
-    "16NE", "16NW", "16SE", "16SW",
-    "17NE", "17NW", "17SE", "17SW",
-    "18NE", "18NW", "18SE", "18SW",
-    "19NE", "19NW", "19SE", "19SW",
-    "20NE", "20NW", "20SE", "20SW",
-    "21NE", "21NW", "21SE", "21SW",
-    "22NE", "22NW", "22SE", "22SW",
-    "23NE", "23NW", "23SE", "23SW"
+    "14NE", "14NW", "14SE", "14SW", "15NE", "15NW", "15SE", "15SW",
+    "16NE", "16NW", "16SE", "16SW", "17NE", "17NW", "17SE", "17SW",
+    "18NE", "18NW", "18SE", "18SW", "19NE", "19NW", "19SE", "19SW",
+    "20NE", "20NW", "20SE", "20SW", "21NE", "21NW", "21SE", "21SW",
+    "22NE", "22NW", "22SE", "22SW", "23NE", "23NW", "23SE", "23SW"
 ];
 
-// Set starting position for the grid
-let col = -20; 
-let row = 11.5;
+function arrangeGalleryView() {
+    camera.position.set(0, 11, 20);
+    camera.lookAt(0, 5, 0);
+    gridGroup.clear();
+    gridGroup.position.set(-2.5, 0, 0);
 
-// Create the 10-column, 5-row grid
-// Create the 10-column, 4-row grid, column by column order
-modelNames.forEach((modelName, index) => {
-    // Adjust for 10 columns and 4 rows
-    const x = col + Math.floor(index / 4) * horizontalGap;  // Adjust for columns
-    const y = row - (index % 4) * verticalGap;  // Adjust for rows
-    loadModel(modelName, x, y);
+    models = [];
+    modelNames.forEach((modelName, index) => {
+        const x = -20 + Math.floor(index / 4) * GalleryXGap;
+        const y = 11.5 - (index % 4) * GalleryYGap;
+        loadModel(modelName, x, y, 0);
+    });
+}
+
+function arrangeStreetView() {
+    camera.position.set(20, 10, 0);
+    camera.lookAt(0, 0, -20);
+    gridGroup.clear();
+    gridGroup.position.set(8, 3, 0);
+
+    models = [];
+    
+    const swappedModelNames = modelNames.map((name) => {
+        if (name.endsWith("NW")) return name.replace("NW", "SE");
+        if (name.endsWith("SE")) return name.replace("SE", "NW");
+        if (name.endsWith("SW")) return name.replace("SW", "NE");
+        if (name.endsWith("NE")) return name.replace("NE", "SW");
+        return name;
+    });
+
+    swappedModelNames.forEach((modelName, index) => {
+        const column = index % 2;
+        const row = Math.floor(index / 2);
+        const x = -10 + column * StreetXGap;
+        const z = -row * StreetZGap;
+
+        loadModel(modelName, x, 0, z);
+    });
+}
+
+document.getElementById('galleryView').addEventListener('click', () => {
+    if (currentView !== 'gallery') {
+        arrangeGalleryView();
+        currentView = 'gallery';
+    }
 });
 
+document.getElementById('streetView').addEventListener('click', () => {
+    if (currentView !== 'street') {
+        arrangeStreetView();
+        currentView = 'street';
+    }
+});
 
-// Animation loop (runs after all models are loaded)
+arrangeGalleryView();
+
 function animate() {
     requestAnimationFrame(animate);
 
@@ -121,27 +178,36 @@ function animate() {
         model.rotation.y += 0.001;
     });
 
-    controls.update();
     renderer.render(scene, camera);
 
-    // Check if all models have rendered, and remove the loading screen smoothly
     if (allModelsRendered) {
         hideLoadingScreen();
     }
 }
 
-// Function to hide the loading screen with a smooth transition
 function hideLoadingScreen() {
-    loadingScreen.style.transition = 'opacity 0.5s ease'; 
+    loadingScreen.style.transition = 'opacity 0.5s ease';
     loadingScreen.style.opacity = 0;
 
     setTimeout(() => {
         loadingScreen.style.display = 'none';
-        allModelsRendered = false; 
-    }, 500); 
+        allModelsRendered = false;
+    }, 500);
 }
 
-// Adjust the grid's overall position if necessary
-gridGroup.position.set(-2.5, -4, 0);
-
 animate();
+
+window.addEventListener('mousemove', (event) => {
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+    raycaster.setFromCamera(mouse, camera);
+    const intersects = raycaster.intersectObjects(models, true);
+
+    models.forEach((model) => resetMaterial(model));
+
+    if (intersects.length > 0) {
+        const intersectedModel = intersects[0].object.parent;
+        onHover(intersectedModel);
+    }
+});

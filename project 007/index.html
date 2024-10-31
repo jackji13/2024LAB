@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
@@ -18,26 +20,31 @@
 <body>
 
     <div id="loading-screen">
-        <h1>Loading...</h1>
+        <h1>Only humans create straight lines...</h1>
     </div>
 
     <div id="container"></div>
 
+    <div class="topContainer">
+        <button id="galleryView">Gallery view</button>
+        <h1 class="title">Corners</h1>
+        <button id="streetView">Street view</button>
+    </div>
+
     <p class="text">
-        This project explores how human design imposes rigid, geometric order onto the 
-        natural world, which typically favors curves and irregular forms. Manhattan’s 
-        grid system, with its straight lines and sharp angles, is a prime example of 
-        this contrast. By focusing on block corners along 5th Avenue, the project 
-        highlights the ways in which urban planning creates a structured, repetitive 
-        landscape that contrasts with the organic, unpredictable patterns found in 
-        nature. These corners, though uniform in concept, carry subtle variations that 
-        reveal the tension between human control and environmental influence. The 
-        project invites reflection on how cities reshape natural spaces into orderly, 
-        linear forms, emphasizing humanity's need for structure and control over its 
-        surroundings.
+        This project explores how human design imposes rigid, geometric order 
+        onto the natural world, which typically favors curves and irregular 
+        forms. Antoni Gaudí’s insight, “The straight line belongs to man, the 
+        curved line belongs to God,” resonates here, emphasizing the distinction 
+        between human-made structures and nature’s organic beauty. Manhattan’s 
+        grid system, with its straight lines and sharp angles, exemplifies this 
+        contrast. By focusing on block corners along 5th Avenue, the project 
+        highlights how urban planning creates a structured, repetitive landscape, 
+        distinct from the unpredictable patterns found in nature. These corners, 
+        though uniform in concept, carry subtle variations that reveal the tension 
+        between human control and environmental influence.
     </p>
 
-    <!-- Load title.js first -->
     <script src="loading.js" defer></script>
     <script src="title.js" defer></script>
 
