@@ -3,7 +3,7 @@ document.getElementById('searchButton').addEventListener('click', async () => {
 
     if (query) {
         try {
-            const response = await fetch(`https://node-sblg.onrender.com/search?query=${encodeURIComponent(query)}`);
+            const response = await fetch(`http://localhost:3001/search?query=${encodeURIComponent(query)}`);
             
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
