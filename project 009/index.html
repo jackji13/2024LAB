@@ -3,48 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scrape Inputs with CSS</title>
-  <script>
-    async function scrapeInputs() {
-      const url = document.getElementById("urlInput").value;
-      if (!url) {
-        alert("Please enter a URL");
-        return;
-      }
-
-      try {
-        const response = await fetch(`https://element-scaper-api.onrender.com/scrape?url=${encodeURIComponent(url)}`);
-        const data = await response.json();
-        const resultContainer = document.getElementById("result");
-        resultContainer.innerHTML = ""; // Clear previous results
-
-        data.inputs.forEach(input => {
-          const inputElement = document.createElement("input");
-          inputElement.type = input.type;
-          inputElement.name = input.name;
-          inputElement.id = input.id;
-          inputElement.className = input.className;
-
-          // Apply the scraped CSS styles
-          Object.entries(input.styles).forEach(([property, value]) => {
-            inputElement.style[property] = value;
-          });
-
-          resultContainer.appendChild(inputElement);
-          resultContainer.appendChild(document.createElement("br")); // Line break between inputs
-        });
-      } catch (error) {
-        console.error("Error:", error);
-        alert("Failed to scrape the URL");
-      }
-    }
-  </script>
+  <title>Scrape Elements with Full Attributes and CSS</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Scrape Input Elements with CSS</h1>
+  <h1>Scrape Elements with Full Attributes and CSS</h1>
   <input type="text" id="urlInput" placeholder="Enter website URL" style="width: 300px;">
-  <button onclick="scrapeInputs()">Scrape</button>
+  
+  <select id="elementType">
+    <option value="h1">H1</option>
+    <option value="hr">HR</option>
+    <option value="button">Button</option>
+    <option value="input">Input</option>
+  </select>
+  
+  <button onclick="scrapeElements()">Scrape</button>
+  
   <h2>Results:</h2>
-  <div id="result" style="background: #f4f4f4; padding: 10px;"></div>
+  <div id="result" class="result-container"></div>
+  
+  <script src="script.js"></script>
 </body>
 </html>

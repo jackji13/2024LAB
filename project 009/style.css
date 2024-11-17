@@ -1,0 +1,27 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  
+  h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  input, select {
+    margin-bottom: 10px;
+    padding: 5px;
+  }
+  
+  button {
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .result-container {
+    background: #808080;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+  }
+  
