@@ -1,27 +1,66 @@
+@font-face {
+  font-family: 'Consola';
+  src: url('assets/fonts/consola.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ConsolaBold';
+  src: url('assets/fonts/consolab.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+* {
+  border: 1px solid red;
+  margin: 0;
+  padding: 0;
+  font-family: 'Consola', sans-serif;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-  }
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.subcontainer {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2vw;
+}
   
-  h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
+p {
+  font-size: 18px;
+}
   
-  input, select {
-    margin-bottom: 10px;
-    padding: 5px;
-  }
+input {
+  width: 20vw;
+}
+
+select {
+  width: auto;
+  cursor: pointer;
+}
   
-  button {
-    padding: 5px 10px;
-    cursor: pointer;
-  }
+button {
+  cursor: pointer;
+}
   
-  .result-container {
-    background: #808080;
-    padding: 10px;
-    margin-top: 10px;
-    border: 1px solid #ddd;
-  }
+.result-container {
+  background: #ff0000;
+  border: 1px solid #000000;
+}
   

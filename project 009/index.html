@@ -1,27 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scrape Elements with Full Attributes and CSS</title>
+  <title>HTML Elements Scraper</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <h1>Scrape Elements with Full Attributes and CSS</h1>
-  <input type="text" id="urlInput" placeholder="Enter website URL" style="width: 300px;">
-  
-  <select id="elementType">
-    <option value="h1">H1</option>
-    <option value="hr">HR</option>
-    <option value="button">Button</option>
-    <option value="input">Input</option>
-  </select>
-  
-  <button onclick="scrapeElements()">Scrape</button>
-  
-  <h2>Results:</h2>
-  <div id="result" class="result-container"></div>
+
+  <div class="container">
+
+    <p>Scrape Elements with Full Attributes and CSS</p>
+
+    <div class="subcontainer">
+      <input type="text" id="urlInput" placeholder="Enter a website URL">
+      <select id="elementType">
+        <option value="input">Input</option>
+        <option value="button">Button</option>
+        <option value="h1">H1</option>
+        <option value="hr">HR</option>
+      </select>
+      <button onclick="scrapeElements()">Scrape</button>
+    </div>
+
+    <p>Results:</p>
+
+    <div id="result" class="result-container"></div>
+
+  </div>
   
   <script src="script.js"></script>
+
 </body>
+
 </html>
