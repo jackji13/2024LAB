@@ -13,7 +13,7 @@
 }
 
 * {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   margin: 0;
   padding: 0;
   font-family: 'Consola', sans-serif;
@@ -22,20 +22,26 @@
 body {
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
-}
-
-.container {
-  width: 100vw;
-  height: 100vh;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  background-color: #000000;
+}
+
+.container {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2vh;
 }
 
 .subcontainer {
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,24 +49,68 @@ body {
 }
   
 p {
-  font-size: 18px;
+  font-family: 'ConsolaBold', sans-serif;
+  font-size: 20px;
+  color: #17f700;
+}
+
+.title {
+  margin-top: 2vh;
 }
   
 input {
-  width: 20vw;
+  background-color: #00000000;
+  border: 0px solid #00000000;
+  color: #17f700;
+  width: 30%;
+  padding: 3.5px;
+  transition: all 0.35s ease;
+}
+
+input::placeholder {
+  color: #17f700;
+}
+
+input:hover {
+  background-color: #202020;
+}
+
+input:focus {
+  background-color: #202020;
+  outline: none;
+  color: #17f700;
 }
 
 select {
-  width: auto;
+  padding: 3px;
+  background-color: #00000000;
+  color: #17f700;
+  border: 0px solid #000000;
   cursor: pointer;
+  transition: all 0.35s ease;
+}
+
+select:hover {
+  background-color: #17f700;
+  color: #ffffff;
 }
   
 button {
+  padding: 3px;
+  background-color: #00000000;
+  color: #17f700;
+  border: 0px solid #000000;
   cursor: pointer;
+  transition: all 0.35s ease;
+}
+
+button:hover {
+  background-color: #17f700;
+  color: #ffffff;
 }
   
 .result-container {
-  background: #ff0000;
+  background-color: #202020;
   border: 1px solid #000000;
 }
   

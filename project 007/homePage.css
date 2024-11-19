@@ -46,7 +46,7 @@ body {
 }
 
 #galleryView, #streetView {
-    background-color: #ffffff00;
+    background-color: #00000000;
     color: #ffffff;
     border: 0px solid #000000;
     font-family: 'Consola', sans-serif;
