@@ -1,14 +1,17 @@
 async function scrapeElements() {
   const url = document.getElementById("urlInput").value;
   const elementType = document.getElementById("elementType").value;
-  
+
   if (!url) {
     alert("Please enter a URL");
     return;
   }
 
   try {
-    const response = await fetch(`https://element-scaper-api.onrender.com/scrape?url=${encodeURIComponent(url)}`);
+    // Include elementType in the request
+    const response = await fetch(
+      `https://element-scaper-api.onrender.com/scrape?url=${encodeURIComponent(url)}&elementType=${encodeURIComponent(elementType)}`
+    );
     if (!response.ok) {
       throw new Error("Failed to fetch data from the server");
     }
@@ -16,8 +19,11 @@ async function scrapeElements() {
     const resultContainer = document.getElementById("result");
     resultContainer.innerHTML = ""; // Clear previous results
 
+    const imageContainer = document.getElementById("image");
+    imageContainer.innerHTML = ""; // Clear previous images
+
     // Display only the selected element type
-    data[elementType].forEach(element => {
+    data[elementType].forEach((element) => {
       const elementWrapper = document.createElement("div");
 
       if (element.tagName === "input") {
@@ -63,6 +69,13 @@ async function scrapeElements() {
 
       resultContainer.appendChild(elementWrapper);
       resultContainer.appendChild(document.createElement("br")); // Line break between elements
+
+      // Display the screenshot if available
+      if (element.screenshot) {
+        const imgElement = document.createElement("img");
+        imgElement.src = "data:image/png;base64," + element.screenshot;
+        imageContainer.appendChild(imgElement);
+      }
     });
   } catch (error) {
     console.error("Error:", error);
