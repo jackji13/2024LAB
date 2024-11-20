@@ -37,7 +37,7 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  gap: 2vh;
+  gap: 5vh;
 }
 
 .subcontainer {
@@ -50,12 +50,18 @@ body {
   
 p {
   font-family: 'ConsolaBold', sans-serif;
-  font-size: 20px;
+  font-size: 16pt;
   color: #17f700;
 }
 
 .title {
-  margin-top: 2vh;
+  margin-top: 5vh;
+}
+
+.text {
+  font-size: 10pt;
+  color: #17f700;
+  text-align: justify;
 }
   
 input {
@@ -85,16 +91,23 @@ select {
   padding: 3px;
   background-color: #00000000;
   color: #17f700;
-  border: 0px solid #000000;
+  border: none;
+  outline: none;
   cursor: pointer;
-  transition: all 0.35s ease;
+  transition: all 0.3s ease;
 }
 
 select:hover {
   background-color: #17f700;
   color: #ffffff;
 }
-  
+
+select option {
+  background-color: #000000;
+  color: #17f700;
+  border: none;
+}
+
 button {
   padding: 3px;
   background-color: #00000000;
@@ -108,9 +121,8 @@ button:hover {
   background-color: #17f700;
   color: #ffffff;
 }
-  
-.result-container {
-  background-color: #202020;
-  border: 1px solid #000000;
+
+.image-container, .result-container {
+  font-family: 'Consola', sans-serif;
+  font-size: 12pt;
 }
-  
